@@ -17,10 +17,20 @@
   <meta name="description" content="">
   <meta name="author" content="Lee">
   <meta name="keywords" content="">
-  <title>归档 - Lee</title>
+  <title>计算机网络面试题 - Lee</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -43,7 +53,7 @@
 
 
 <body>
-  <header style="height: 40vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -159,6 +169,40 @@
             </span>
 
             
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-11-30 10:00" pubdate>
+      2020年11月30日 上午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      414 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
           
@@ -169,67 +213,105 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 7 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/11/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">计算机网络面试题</span>
-      <time style="float: right;">11-30</time>
-    </a>
-  
-    
-    <a href="/2020/04/06/2020-4-6-Markdown%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Markdown数学公式语法</span>
-      <time style="float: right;">04-06</time>
-    </a>
-  
-    
-    <a href="/2020/03/29/2020-3-29-TensorFlow%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">TensorFlow基础</span>
-      <time style="float: right;">03-29</time>
-    </a>
-  
-    
-    <a href="/2020/03/10/2020-3-10-Django_rest_framework_jwt/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Django_rest_framework_jwt</span>
-      <time style="float: right;">03-10</time>
-    </a>
-  
-    
-    <a href="/2020/01/30/2020-1-30-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">mysql 数据库常用命令</span>
-      <time style="float: right;">01-30</time>
-    </a>
-  
-    
-    <a href="/2020/01/30/2020-1-30-Django%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Django 项目部署</span>
-      <time style="float: right;">01-30</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">计算机网络面试题</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="从-URL-输入到页面展现发生了什么"><a href="#从-URL-输入到页面展现发生了什么" class="headerlink" title="从 URL 输入到页面展现发生了什么?"></a>从 URL 输入到页面展现发生了什么?</h2><ol>
+<li>在浏览器中输入url</li>
+<li>应用层DNS解析域名：先本地查找，再查询DNS服务器</li>
+<li>应用层客户端发送HTTP请求</li>
+<li>传输层TCP传输报文：三次握手</li>
+<li>网络层IP协议查询MAC地址</li>
+<li>数据到达数据链路层</li>
+<li>服务器接收数据</li>
+<li>服务器响应请求</li>
+<li>服务器返回相应文件</li>
+<li>页面渲染。解析HTML以构建DOM树 –&gt; 构建渲染树 –&gt; 布局渲染树 –&gt; 绘制渲染树。</li>
+</ol>
+<h2 id="OSI的体系结构"><a href="#OSI的体系结构" class="headerlink" title="OSI的体系结构"></a>OSI的体系结构</h2><ul>
+<li>应用层：文件传输，常用协议，snmp，FTP</li>
+<li>表示层：数据格式化，代码转换，数据加密</li>
+<li>会话层：建立、解除会话</li>
+<li>传输层：负责端到端的可靠性传输，TCP与UDP</li>
+<li>网络层：为数据包选择路由</li>
+<li>数据链路层：传输有地址的帧</li>
+<li>物理层：二进制的数据形式在物理媒体上传输数据</li>
+</ul>
+<h3 id="cookie和session的异同"><a href="#cookie和session的异同" class="headerlink" title="cookie和session的异同"></a>cookie和session的异同</h3><ol>
+<li>cookie数据存放在客户的浏览器上，session数据放在服务器上。</li>
+<li>cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗，考虑到安全应当使用session。</li>
+<li>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用cookie。</li>
+<li>单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie</li>
+<li>可以考虑将登陆信息等重要信息存放为session，其他信息如果需要保留，可以放在cookie中。</li>
+</ol>
 
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/NetWork/">NetWork</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/04/06/2020-4-6-Markdown%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/">
+                        <span class="hidden-mobile">Markdown数学公式语法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
   </main>
 
@@ -314,6 +396,31 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
 
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
@@ -321,7 +428,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "计算机网络面试题&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -336,6 +443,21 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
 
 
   <script  src="/js/local-search.js" ></script>
@@ -349,6 +471,20 @@
   </script>
 
 
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 

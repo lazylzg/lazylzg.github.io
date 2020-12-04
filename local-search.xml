@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>计算机网络面试题</title>
+    <link href="/2020/11/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    <url>/2020/11/30/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</url>
+    
+    <content type="html"><![CDATA[<h2 id="从-URL-输入到页面展现发生了什么"><a href="#从-URL-输入到页面展现发生了什么" class="headerlink" title="从 URL 输入到页面展现发生了什么?"></a>从 URL 输入到页面展现发生了什么?</h2><ol><li>在浏览器中输入url</li><li>应用层DNS解析域名：先本地查找，再查询DNS服务器</li><li>应用层客户端发送HTTP请求</li><li>传输层TCP传输报文：三次握手</li><li>网络层IP协议查询MAC地址</li><li>数据到达数据链路层</li><li>服务器接收数据</li><li>服务器响应请求</li><li>服务器返回相应文件</li><li>页面渲染。解析HTML以构建DOM树 –&gt; 构建渲染树 –&gt; 布局渲染树 –&gt; 绘制渲染树。</li></ol><h2 id="OSI的体系结构"><a href="#OSI的体系结构" class="headerlink" title="OSI的体系结构"></a>OSI的体系结构</h2><ul><li>应用层：文件传输，常用协议，snmp，FTP</li><li>表示层：数据格式化，代码转换，数据加密</li><li>会话层：建立、解除会话</li><li>传输层：负责端到端的可靠性传输，TCP与UDP</li><li>网络层：为数据包选择路由</li><li>数据链路层：传输有地址的帧</li><li>物理层：二进制的数据形式在物理媒体上传输数据</li></ul><h3 id="cookie和session的异同"><a href="#cookie和session的异同" class="headerlink" title="cookie和session的异同"></a>cookie和session的异同</h3><ol><li>cookie数据存放在客户的浏览器上，session数据放在服务器上。</li><li>cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗，考虑到安全应当使用session。</li><li>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用cookie。</li><li>单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie</li><li>可以考虑将登陆信息等重要信息存放为session，其他信息如果需要保留，可以放在cookie中。</li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>NetWork</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Markdown数学公式语法</title>
     <link href="/2020/04/06/2020-4-6-Markdown%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/"/>
     <url>/2020/04/06/2020-4-6-Markdown%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F%E8%AF%AD%E6%B3%95/</url>
@@ -140,27 +159,6 @@
     <url>/2019/10/10/%E6%A8%A1%E6%9D%BF%E6%96%87%E4%BB%B6/</url>
     
     <content type="html"><![CDATA[<h1 id="标题一"><a href="#标题一" class="headerlink" title="标题一"></a>标题一</h1><blockquote><p>引用内容</p></blockquote><p>测试内容</p><h2 id="标题二"><a href="#标题二" class="headerlink" title="标题二"></a>标题二</h2><p>测试内容</p><div class="note note-success">            <p>文字 或者 <code>markdown</code> 均可</p>          </div><h1 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h1><pre><code class="hljs markdown">---title: 模板文件tags: [Hexo, Fluid]excerpt: 这里是是摘要index<span class="hljs-emphasis">_img: /img/default.png</span><span class="hljs-emphasis">banner_</span>img: /img/background.jpgdate: 2019-10-10 10:00:00---<span class="hljs-section"># 标题一</span><span class="hljs-quote">&gt; 引用内容</span>测试内容<span class="hljs-section">## 标题二</span>测试内容&#123;% note success %&#125;文字 或者 <span class="hljs-code">`markdown`</span> 均可&#123;% endnote %&#125;<span class="hljs-section">### 标题三</span>测试内容<span class="hljs-section">## 参考</span>[<span class="hljs-symbol">^1</span>]: <span class="hljs-link">https://hexo.fluid-dev.com/docs/</span>[<span class="hljs-symbol">^2</span>]: <span class="hljs-link">参考资料2</span></code></pre><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a href="https://hexo.fluid-dev.com/docs/">https://hexo.fluid-dev.com/docs/</a><a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span>参考资料2<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>Hexo</tag>
-      
-      <tag>Fluid</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>模板文件</title>
-    <link href="/2019/10/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
-    <url>/2019/10/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</url>
-    
-    <content type="html"><![CDATA[<h2 id="从-URL-输入到页面展现发生了什么"><a href="#从-URL-输入到页面展现发生了什么" class="headerlink" title="从 URL 输入到页面展现发生了什么?"></a>从 URL 输入到页面展现发生了什么?</h2><ol><li>在浏览器中输入url</li><li>应用层DNS解析域名：先本地查找，再查询DNS服务器</li><li>应用层客户端发送HTTP请求</li><li>传输层TCP传输报文：三次握手</li><li>网络层IP协议查询MAC地址</li><li>数据到达数据链路层</li><li>服务器接收数据</li><li>服务器响应请求</li><li>服务器返回相应文件</li><li>页面渲染。解析HTML以构建DOM树 –&gt; 构建渲染树 –&gt; 布局渲染树 –&gt; 绘制渲染树。</li></ol><h2 id="OSI的体系结构"><a href="#OSI的体系结构" class="headerlink" title="OSI的体系结构"></a>OSI的体系结构</h2><ul><li>应用层：文件传输，常用协议，snmp，FTP</li><li>表示层：数据格式化，代码转换，数据加密</li><li>会话层：建立、解除会话</li><li>传输层：负责端到端的可靠性传输，TCP与UDP</li><li>网络层：为数据包选择路由</li><li>数据链路层：传输有地址的帧</li><li>物理层：二进制的数据形式在物理媒体上传输数据</li></ul>]]></content>
     
     
     
