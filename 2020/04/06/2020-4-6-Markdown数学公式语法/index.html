@@ -1,0 +1,768 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Lee">
+  <meta name="keywords" content="">
+  <title>Markdown数学公式语法 - Lee</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_6peoq002giu.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Lee's blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container page-header text-center fade-in-up">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-04-06 13:14" pubdate>
+      2020年4月6日 下午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Markdown数学公式语法</h1>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="行内与独行"><a href="#行内与独行" class="headerlink" title="行内与独行"></a>行内与独行</h1><ol>
+<li> 行内公式：将公式插入到本行内，符号：<code>$公式内容$</code>，如：$xyz$</li>
+<li> 独行公式：将公式插入到新的一行内，并且居中，符号：<code>$$公式内容$$</code>，如：$$xyz$$</li>
+</ol>
+<h1 id="上标、下标与组合"><a href="#上标、下标与组合" class="headerlink" title="上标、下标与组合"></a>上标、下标与组合</h1><ol>
+<li> 上标符号，符号：<code>^</code>，如：$x^4$</li>
+<li> 下标符号，符号：<code>_</code>，如：$x_1$</li>
+<li> 组合符号，符号：<code>&#123;&#125;</code>，如：${16}<em>{8}O{2+}</em>{2}$</li>
+</ol>
+<h1 id="汉字、字体与格式"><a href="#汉字、字体与格式" class="headerlink" title="汉字、字体与格式"></a>汉字、字体与格式</h1><ol>
+<li> 汉字形式，符号：<code>\mbox&#123;&#125;</code>，如：$V_{\mbox{初始}}$</li>
+<li> 字体控制，符号：<code>\displaystyle</code>，如：$\displaystyle \frac{x+y}{y+z}$</li>
+<li> 下划线符号，符号：<code>\underline</code>，如：$\underline{x+y}$</li>
+<li> 标签，符号<code>\tag&#123;数字&#125;</code>，如：$\tag{11}$</li>
+<li> 上大括号，符号：<code>\overbrace&#123;算式&#125;</code>，如：$\overbrace{a+b+c+d}^{2.0}$</li>
+<li> 下大括号，符号：<code>\underbrace&#123;算式&#125;</code>，如：$a+\underbrace{b+c}_{1.0}+d$</li>
+<li> 上位符号，符号：<code>\stacrel&#123;上位符号&#125;&#123;基位符号&#125;</code>，如：$\vec{x}\stackrel{\mathrm{def}}{=}{x_1,\dots,x_n}$</li>
+</ol>
+<h1 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h1><ol>
+<li> 两个quad空格，符号：<code>\qquad</code>，如：$x \qquad y$</li>
+<li> quad空格，符号：<code>\quad</code>，如：$x \quad y$</li>
+<li> 大空格，符号<code>\</code>，如：$x \  y$</li>
+<li> 中空格，符号<code>\:</code>，如：$x : y$</li>
+<li> 小空格，符号<code>\,</code>，如：$x , y$</li>
+<li> 没有空格，符号``，如：$xy$</li>
+<li> 紧贴，符号<code>\!</code>，如：$x ! y$</li>
+</ol>
+<h1 id="定界符与组合"><a href="#定界符与组合" class="headerlink" title="定界符与组合"></a>定界符与组合</h1><ol>
+<li> 括号，符号：<code>（）\big(\big) \Big(\Big) \bigg(\bigg) \Bigg(\Bigg)</code>，如：$（）\big(\big) \Big(\Big) \bigg(\bigg) \Bigg(\Bigg)$</li>
+<li> 中括号，符号：<code>[]</code>，如：$[x+y]$</li>
+<li> 大括号，符号：<code>\&#123; \&#125;</code>，如：${x+y}$</li>
+<li> 自适应括号，符号：<code>\left \right</code>，如：$\left(x\right)$，$\left(x{yz}\right)$</li>
+<li> 组合公式，符号：<code>&#123;上位公式 \choose 下位公式&#125;</code>，如：${n+1 \choose k}={n \choose k}+{n \choose k-1}$</li>
+<li> 组合公式，符号：<code>&#123;上位公式 \atop 下位公式&#125;</code>，如：$\sum_{k_0,k_1,\ldots&gt;0 \atop k_0+k_1+\cdots=n}A_{k_0}A_{k_1}\cdots$</li>
+</ol>
+<h1 id="四则运算"><a href="#四则运算" class="headerlink" title="四则运算"></a>四则运算</h1><ol>
+<li> 加法运算，符号：<code>+</code>，如：$x+y=z$</li>
+<li> 减法运算，符号：<code>-</code>，如：$x-y=z$</li>
+<li> 加减运算，符号：<code>\pm</code>，如：$x \pm y=z$</li>
+<li> 减甲运算，符号：<code>\mp</code>，如：$x \mp y=z$</li>
+<li> 乘法运算，符号：<code>\times</code>，如：$x \times y=z$</li>
+<li> 点乘运算，符号：<code>\cdot</code>，如：$x \cdot y=z$</li>
+<li> 星乘运算，符号：<code>\ast</code>，如：$x \ast y=z$</li>
+<li> 除法运算，符号：<code>\div</code>，如：$x \div y=z$</li>
+<li> 斜法运算，符号：<code>/</code>，如：$x/y=z$</li>
+<li> 分式表示，符号：<code>\frac&#123;分子&#125;&#123;分母&#125;</code>，如：$\frac{x+y}{y+z}$</li>
+<li> 分式表示，符号：<code>&#123;分子&#125; \voer &#123;分母&#125;</code>，如：${x+y} \over {y+z}$</li>
+<li> 绝对值表示，符号：<code>||</code>，如：$|x+y|$</li>
+</ol>
+<h1 id="高级运算"><a href="#高级运算" class="headerlink" title="高级运算"></a>高级运算</h1><ol>
+<li> 平均数运算，符号：<code>\overline&#123;算式&#125;</code>，如：$\overline{xyz}$</li>
+<li> 开二次方运算，符号：<code>\sqrt</code>，如：$\sqrt x$</li>
+<li> 开方运算，符号：<code>\sqrt[开方数]&#123;被开方数&#125;</code>，如：$\sqrt[3]{x+y}$</li>
+<li> 对数运算，符号：<code>\log</code>，如：$\log(x)$</li>
+<li> 极限运算，符号：<code>\lim</code>，如：$\lim^{x \to \infty}_{y \to 0}{\frac{x}{y}}$</li>
+<li> 极限运算，符号：<code>\displaystyle \lim</code>，如：$\displaystyle \lim^{x \to \infty}_{y \to 0}{\frac{x}{y}}$</li>
+<li> 求和运算，符号：<code>\sum</code>，如：$\sum^{x \to \infty}_{y \to 0}{\frac{x}{y}}$</li>
+<li> 求和运算，符号：<code>\displaystyle \sum</code>，如：$\displaystyle \sum^{x \to \infty}_{y \to 0}{\frac{x}{y}}$</li>
+<li> 积分运算，符号：<code>\int</code>，如：$\int^{\infty}_{0}{xdx}$</li>
+<li> 积分运算，符号：<code>\displaystyle \int</code>，如：$\displaystyle \int^{\infty}_{0}{xdx}$</li>
+<li> 微分运算，符号：<code>\partial</code>，如：$\frac{\partial x}{\partial y}$</li>
+<li> 矩阵表示，符号：<code>\begin&#123;matrix&#125; \end&#123;matrix&#125;</code>，如：$\left[ \begin{matrix} 1 &amp;2 &amp;\cdots &amp;4\5 &amp;6 &amp;\cdots &amp;8\vdots &amp;\vdots &amp;\ddots &amp;\vdots\13 &amp;14 &amp;\cdots &amp;16\end{matrix} \right]$</li>
+</ol>
+<h1 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h1><ol>
+<li> 等于运算，符号：<code>=</code>，如：$x+y=z$</li>
+<li> 大于运算，符号：<code>&gt;</code>，如：$x+y&gt;z$</li>
+<li> 小于运算，符号：<code>&lt;</code>，如：$x+y&lt;z$</li>
+<li> 大于等于运算，符号：<code>\geq</code>，如：$x+y \geq z$</li>
+<li> 小于等于运算，符号：<code>\leq</code>，如：$x+y \leq z$</li>
+<li> 不等于运算，符号：<code>\neq</code>，如：$x+y \neq z$</li>
+<li> 不大于等于运算，符号：<code>\ngeq</code>，如：$x+y \ngeq z$</li>
+<li> 不大于等于运算，符号：<code>\not\geq</code>，如：$x+y \not\geq z$</li>
+<li> 不小于等于运算，符号：<code>\nleq</code>，如：$x+y \nleq z$</li>
+<li> 不小于等于运算，符号：<code>\not\leq</code>，如：$x+y \not\leq z$</li>
+<li> 约等于运算，符号：<code>\approx</code>，如：$x+y \approx z$</li>
+<li> 恒定等于运算，符号：<code>\equiv</code>，如：$x+y \equiv z$</li>
+</ol>
+<h1 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h1><ol>
+<li> 属于运算，符号：<code>\in</code>，如：$x \in y$</li>
+<li> 不属于运算，符号：<code>\notin</code>，如：$x \notin y$</li>
+<li> 不属于运算，符号：<code>\not\in</code>，如：$x \not\in y$</li>
+<li> 子集运算，符号：<code>\subset</code>，如：$x \subset y$</li>
+<li> 子集运算，符号：<code>\supset</code>，如：$x \supset y$</li>
+<li> 真子集运算，符号：<code>\subseteq</code>，如：$x \subseteq y$</li>
+<li> 非真子集运算，符号：<code>\subsetneq</code>，如：$x \subsetneq y$</li>
+<li> 真子集运算，符号：<code>\supseteq</code>，如：$x \supseteq y$</li>
+<li> 非真子集运算，符号：<code>\supsetneq</code>，如：$x \supsetneq y$</li>
+<li> 非子集运算，符号：<code>\not\subset</code>，如：$x \not\subset y$</li>
+<li> 非子集运算，符号：<code>\not\supset</code>，如：$x \not\supset y$</li>
+<li> 并集运算，符号：<code>\cup</code>，如：$x \cup y$</li>
+<li> 交集运算，符号：<code>\cap</code>，如：$x \cap y$</li>
+<li> 差集运算，符号：<code>\setminus</code>，如：$x \setminus y$</li>
+<li> 同或运算，符号：<code>\bigodot</code>，如：$x \bigodot y$</li>
+<li> 同与运算，符号：<code>\bigotimes</code>，如：$x \bigotimes y$</li>
+<li> 实数集合，符号：<code>\mathbb&#123;R&#125;</code>，如：<code>\mathbb&#123;R&#125;</code> </li>
+<li> 自然数集合，符号：<code>\mathbb&#123;Z&#125;</code>，如：<code>\mathbb&#123;Z&#125;</code> </li>
+<li> 空集，符号：<code>\emptyset</code>，如：$\emptyset$</li>
+</ol>
+<h1 id="数学符号"><a href="#数学符号" class="headerlink" title="数学符号"></a>数学符号</h1><ol>
+<li> 无穷，符号：<code>\infty</code>，如：$\infty$</li>
+<li> 虚数，符号：<code>\imath</code>，如：$\imath$</li>
+<li> 虚数，符号：<code>\jmath</code>，如：$\jmath$</li>
+<li> 数学符号，符号<code>\hat&#123;a&#125;</code>，如：$\hat{a}$</li>
+<li> 数学符号，符号<code>\check&#123;a&#125;</code>，如：$\check{a}$</li>
+<li> 数学符号，符号<code>\breve&#123;a&#125;</code>，如：$\breve{a}$</li>
+<li> 数学符号，符号<code>\tilde&#123;a&#125;</code>，如：$\tilde{a}$</li>
+<li> 数学符号，符号<code>\bar&#123;a&#125;</code>，如：$\bar{a}$</li>
+<li> 矢量符号，符号<code>\vec&#123;a&#125;</code>，如：$\vec{a}$</li>
+<li> 数学符号，符号<code>\acute&#123;a&#125;</code>，如：$\acute{a}$</li>
+<li> 数学符号，符号<code>\grave&#123;a&#125;</code>，如：$\grave{a}$</li>
+<li> 数学符号，符号<code>\mathring&#123;a&#125;</code>，如：$\mathring{a}$</li>
+<li> 一阶导数符号，符号<code>\dot&#123;a&#125;</code>，如：$\dot{a}$</li>
+<li> 二阶导数符号，符号<code>\ddot&#123;a&#125;</code>，如：$\ddot{a}$</li>
+<li> 上箭头，符号：<code>\uparrow</code>，如：$\uparrow$</li>
+<li> 上箭头，符号：<code>\Uparrow</code>，如：$\Uparrow$</li>
+<li> 下箭头，符号：<code>\downarrow</code>，如：$\downarrow$</li>
+<li> 下箭头，符号：<code>\Downarrow</code>，如：$\Downarrow$</li>
+<li> 左箭头，符号：<code>\leftarrow</code>，如：$\leftarrow$</li>
+<li> 左箭头，符号：<code>\Leftarrow</code>，如：$\Leftarrow$</li>
+<li> 右箭头，符号：<code>\rightarrow</code>，如：$\rightarrow$</li>
+<li> 右箭头，符号：<code>\Rightarrow</code>，如：$\Rightarrow$</li>
+<li> 底端对齐的省略号，符号：<code>\ldots</code>，如：$1,2,\ldots,n$</li>
+<li> 中线对齐的省略号，符号：<code>\cdots</code>，如：$x_1^2 + x_2^2 + \cdots + x_n^2$</li>
+<li> 竖直对齐的省略号，符号：<code>\vdots</code>，如：$\vdots$</li>
+<li> 斜对齐的省略号，符号：<code>\ddots</code>，如：$\ddots$</li>
+</ol>
+<h1 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h1><table>
+<thead>
+<tr>
+<th>字母</th>
+<th>实现</th>
+<th>字母</th>
+<th>实现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td><code>A</code></td>
+<td>α</td>
+<td><code>\alhpa</code></td>
+</tr>
+<tr>
+<td>B</td>
+<td><code>B</code></td>
+<td>β</td>
+<td><code>\beta</code></td>
+</tr>
+<tr>
+<td>Γ</td>
+<td><code>\Gamma</code></td>
+<td>γ</td>
+<td><code>\gamma</code></td>
+</tr>
+<tr>
+<td>Δ</td>
+<td><code>\Delta</code></td>
+<td>δ</td>
+<td><code>\delta</code></td>
+</tr>
+<tr>
+<td>E</td>
+<td><code>E</code></td>
+<td>ϵ</td>
+<td><code>\epsilon</code></td>
+</tr>
+<tr>
+<td>Z</td>
+<td><code>Z</code></td>
+<td>ζ</td>
+<td><code>\zeta</code></td>
+</tr>
+<tr>
+<td>H</td>
+<td><code>H</code></td>
+<td>η</td>
+<td><code>\eta</code></td>
+</tr>
+<tr>
+<td>Θ</td>
+<td><code>\Theta</code></td>
+<td>θ</td>
+<td><code>\theta</code></td>
+</tr>
+<tr>
+<td>I</td>
+<td><code>I</code></td>
+<td>ι</td>
+<td><code>\iota</code></td>
+</tr>
+<tr>
+<td>K</td>
+<td><code>K</code></td>
+<td>κ</td>
+<td><code>\kappa</code></td>
+</tr>
+<tr>
+<td>Λ</td>
+<td><code>\Lambda</code></td>
+<td>λ</td>
+<td><code>\lambda</code></td>
+</tr>
+<tr>
+<td>M</td>
+<td><code>M</code></td>
+<td>μ</td>
+<td><code>\mu</code></td>
+</tr>
+<tr>
+<td>N</td>
+<td><code>N</code></td>
+<td>ν</td>
+<td><code>\nu</code></td>
+</tr>
+<tr>
+<td>Ξ</td>
+<td><code>\Xi</code></td>
+<td>ξ</td>
+<td><code>\xi</code></td>
+</tr>
+<tr>
+<td>O</td>
+<td><code>O</code></td>
+<td>ο</td>
+<td><code>\omicron</code></td>
+</tr>
+<tr>
+<td>Π</td>
+<td><code>\Pi</code></td>
+<td>π</td>
+<td><code>\pi</code></td>
+</tr>
+<tr>
+<td>P</td>
+<td><code>P</code></td>
+<td>ρ</td>
+<td><code>\rho</code></td>
+</tr>
+<tr>
+<td>Σ</td>
+<td><code>\Sigma</code></td>
+<td>σ</td>
+<td><code>\sigma</code></td>
+</tr>
+<tr>
+<td>T</td>
+<td><code>T</code></td>
+<td>τ</td>
+<td><code>\tau</code></td>
+</tr>
+<tr>
+<td>Υ</td>
+<td><code>\Upsilon</code></td>
+<td>υ</td>
+<td><code>\upsilon</code></td>
+</tr>
+<tr>
+<td>Φ</td>
+<td><code>\Phi</code></td>
+<td>ϕ</td>
+<td><code>\phi</code></td>
+</tr>
+<tr>
+<td>X</td>
+<td><code>X</code></td>
+<td>χ</td>
+<td><code>\chi</code></td>
+</tr>
+<tr>
+<td>Ψ</td>
+<td><code>\Psi</code></td>
+<td>ψ</td>
+<td><code>\psi</code></td>
+</tr>
+<tr>
+<td>Ω</td>
+<td><code>\v</code></td>
+<td>ω</td>
+<td><code>\omega</code></td>
+</tr>
+</tbody></table>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Markdown/">Markdown</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Markdown/">Markdown</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/03/29/2020-3-29-TensorFlow%E5%9F%BA%E7%A1%80/">
+                        <span class="hidden-mobile">TensorFlow基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <div>
+      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
+      <i class="iconfont icon-love"></i>
+      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener">
+        <span>Fluid</span></a>
+    </div>
+    
+
+    
+  <!-- 备案信息 -->
+  <div class="beian">
+    <a href="http://beian.miit.gov.cn/" target="_blank"
+       rel="nofollow noopener">苏ICP备19010124号</a>
+    
+  </div>
+
+
+    
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Markdown数学公式语法&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
