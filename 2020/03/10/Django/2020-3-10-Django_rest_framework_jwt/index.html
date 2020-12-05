@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Lee">
   <meta name="keywords" content="">
-  <title>Django 项目部署 - Lee</title>
+  <title>Django_rest_framework_jwt - Lee</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -172,8 +172,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-01-30 15:34" pubdate>
-      2020年1月30日 下午
+    <time datetime="2020-03-10 15:57" pubdate>
+      2020年3月10日 下午
     </time>
   </div>
 
@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      249 字
+      185 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      3
        分钟
     </span>
   
@@ -223,73 +223,55 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">Django 项目部署</h1>
+            <h1 style="display: none">Django_rest_framework_jwt</h1>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="安装-nginx"><a href="#安装-nginx" class="headerlink" title="安装 nginx"></a>安装 nginx</h2><p><code>sudo apt-get install nginx</code></p>
-<h2 id="安装-mysql-数据库"><a href="#安装-mysql-数据库" class="headerlink" title="安装 mysql 数据库"></a>安装 mysql 数据库</h2><h2 id="配置虚拟环境"><a href="#配置虚拟环境" class="headerlink" title="配置虚拟环境"></a>配置虚拟环境</h2><p><code>virtualenv venv</code></p>
-<h2 id="激活虚拟环境"><a href="#激活虚拟环境" class="headerlink" title="激活虚拟环境"></a>激活虚拟环境</h2><p><code>source venv/bin/activate</code></p>
-<h2 id="安装-uwsgi"><a href="#安装-uwsgi" class="headerlink" title="安装 uwsgi"></a>安装 uwsgi</h2><p><code>pip install uwsgi</code></p>
-<p><code>sudo apt-get install mysql-server</code></p>
-<h2 id="生成-requirements-txt"><a href="#生成-requirements-txt" class="headerlink" title="生成 requirements.txt"></a>生成 requirements.txt</h2><p><code>pip freeze &gt; requirements.txt</code></p>
-<h2 id="安装-requirements-txt"><a href="#安装-requirements-txt" class="headerlink" title="安装 requirements.txt"></a>安装 requirements.txt</h2><p><code>pip install -r requirements.txt</code></p>
-<h2 id="配置-nginx-conf"><a href="#配置-nginx-conf" class="headerlink" title="配置 nginx.conf"></a>配置 nginx.conf</h2><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;
-    <span class="hljs-attribute">charset</span>      utf-<span class="hljs-number">8</span>;
-    <span class="hljs-attribute">listen</span>       <span class="hljs-number">443</span>;
-    <span class="hljs-attribute">server_name</span>  api.domian.com;
-    <span class="hljs-attribute">root</span> /var/www/api;
-    
-    <span class="hljs-attribute">ssl</span> <span class="hljs-literal">on</span>;
-    <span class="hljs-attribute">ssl_certificate</span> /var/www/api/1_api.domian.com_bundle.crt;
-    <span class="hljs-attribute">ssl_certificate_key</span> /var/www/api/2_api.domian.com.key;
-    <span class="hljs-attribute">ssl_session_timeout</span> <span class="hljs-number">5m</span>;
-    <span class="hljs-attribute">ssl_protocols</span> TLSv1 TLSv1.<span class="hljs-number">1</span> TLSv1.<span class="hljs-number">2</span>;
-    <span class="hljs-attribute">ssl_ciphers</span> ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
-    <span class="hljs-attribute">ssl_prefer_server_ciphers</span> <span class="hljs-literal">on</span>;
+              <h1 id="自定义验证错误返回"><a href="#自定义验证错误返回" class="headerlink" title="自定义验证错误返回"></a>自定义验证错误返回</h1><p>在使用Django做前端后端项目时，登陆认证方法往往使用的是jwt_token，但是想自定义登陆成功和失败的返回体。<br>打开 <code>rest_framework_jwt/settings.py</code>添加</p>
+<pre><code class="hljs r">DEFAULTS = &#123;
+    <span class="hljs-keyword">...</span>
+    <span class="hljs-string">&#x27;JWT_RESPONSE_PAYLOAD_HANDLER&#x27;</span>:
+    <span class="hljs-string">&#x27;rest_framework_jwt.utils.jwt_response_payload_handler&#x27;</span>,
 
-    <span class="hljs-attribute">location</span> / &#123;
-        <span class="hljs-attribute">include</span>   uwsgi_params;
-        <span class="hljs-attribute">uwsgi_pass</span>   <span class="hljs-number">127.0.0.1:8080</span>;
-    &#125;
-    <span class="hljs-comment"># 指向django的media目录</span>
-    <span class="hljs-attribute">location</span> /media  &#123;
-	    <span class="hljs-attribute">alias</span> /var/www/api/media; 
-	&#125;
-	<span class="hljs-comment"># 指向django的static目录</span>
-	<span class="hljs-attribute">location</span> /static &#123;
-	    <span class="hljs-attribute">alias</span> /var/www/api/static; 
-	&#125;
+    <span class="hljs-string">&#x27;JWT_RESPONSE_PAYLOAD_ERROR_HANDLER&#x27;</span>:
+    <span class="hljs-string">&#x27;rest_framework_jwt.utils.jwt_response_payload_error_handler&#x27;</span>,
+    <span class="hljs-keyword">...</span>
 &#125;
-<span class="hljs-section">server</span> &#123;
-    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;
-    <span class="hljs-attribute">server_name</span> course.zguolee.cn; 
-    <span class="hljs-attribute">rewrite</span><span class="hljs-regexp"> ^(.*)$</span> https://$host<span class="hljs-variable">$1</span> <span class="hljs-literal">permanent</span>;
-    <span class="hljs-attribute">location</span> / &#123;
-    	<span class="hljs-attribute">index</span> index.html index.htm;
-    &#125;
-&#125;</code></pre>
 
-<h2 id="配置-uwsgi-ini"><a href="#配置-uwsgi-ini" class="headerlink" title="配置 uwsgi.ini"></a>配置 uwsgi.ini</h2><pre><code class="hljs ini"><span class="hljs-section">[uwsgi]</span>
-<span class="hljs-comment"># variables</span>
-<span class="hljs-attr">projectname</span> = projectname
-<span class="hljs-attr">projectdomain</span> = api.domian.com
-<span class="hljs-attr">base</span> = /var/www/api
 
-<span class="hljs-comment"># config</span>
-<span class="hljs-attr">master</span> = <span class="hljs-literal">true</span>
-<span class="hljs-attr">protocol</span> = uwsgi
-<span class="hljs-attr">env</span> = DJANGO_SETTINGS_MODULE=%(projectname).settings
-<span class="hljs-attr">pythonpath</span> = %(base)/%(projectname)
-<span class="hljs-attr">module</span> = %(projectname).wsgi
-<span class="hljs-attr">socket</span> = <span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">8080</span>   
-<span class="hljs-comment"># 存进程id的文件</span>
-<span class="hljs-attr">pidfile</span>=uwsgi.pid
-<span class="hljs-comment"># 日志文件</span>
-<span class="hljs-attr">daemonize</span>=uwsgi.log</code></pre>
+<span class="hljs-comment"># List of settings that may be in string import notation.</span>
+IMPORT_STRINGS = (
+    <span class="hljs-keyword">...</span>
+    <span class="hljs-string">&#x27;JWT_RESPONSE_PAYLOAD_HANDLER&#x27;</span>,
+    <span class="hljs-string">&#x27;JWT_RESPONSE_PAYLOAD_ERROR_HANDLER&#x27;</span>,
+    <span class="hljs-string">&#x27;JWT_GET_USER_SECRET_KEY&#x27;</span>,
+)</code></pre>
 
-<p><code>python manage.py collectstatic</code></p>
-<p><code>service nginx start</code> 启动 <strong>nginx</strong> 转发 </p>
-<p><code>uwsgi --ini uwsgi.ini</code></p>
+<p>在 <code>rest_framework_jwt/utils.py</code>末尾添加</p>
+<pre><code class="hljs python">...
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">jwt_response_payload_error_handler</span>(<span class="hljs-params">serializer, request=None</span>):</span>
+    <span class="hljs-keyword">return</span> &#123;
+        <span class="hljs-string">&quot;msg&quot;</span>: <span class="hljs-string">&quot;username or password is error.&quot;</span>,
+        <span class="hljs-string">&quot;status&quot;</span>: <span class="hljs-number">400</span>,
+        <span class="hljs-string">&quot;detail&quot;</span>: serializer.errors
+    &#125;</code></pre>
+
+<p>在<code>rest_framework_jwt/views.py</code>修改</p>
+<pre><code class="hljs python">jwt_response_payload_handler = api_settings.JWT_RESPONSE_PAYLOAD_HANDLER
+jwt_response_payload_error_handler = api_settings.JWT_RESPONSE_PAYLOAD_ERROR_HANDLER
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JSONWebTokenAPIView</span>(<span class="hljs-params">APIView</span>):</span>
+    <span class="hljs-string">&quot;&quot;&quot;</span>
+<span class="hljs-string">    Base API View that various JWT interactions inherit from.</span>
+<span class="hljs-string">    &quot;&quot;&quot;</span>
+    ...
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">post</span>(<span class="hljs-params">self, request, *args, **kwargs</span>):</span>
+        ...
+        <span class="hljs-comment"># return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)</span>
+        error_data = jwt_response_payload_error_handler(serializer, request)
+        <span class="hljs-keyword">return</span> Response(error_data, status=status.HTTP_200_OK)</code></pre>
+
 
             </div>
             <hr>
@@ -307,9 +289,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Dajngo2-2/">Dajngo2.2</a>
+                      <a class="hover-with-bg" href="/tags/Python3/">Python3</a>
                     
-                      <a class="hover-with-bg" href="/tags/Python3-7/">Python3.7</a>
+                      <a class="hover-with-bg" href="/tags/Django2-2/">Django2.2</a>
                     
                   </div>
                 
@@ -322,15 +304,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/01/30/2020-1-30-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/">
+                      <a href="/2020/03/29/2020-3-29-TensorFlow%E5%9F%BA%E7%A1%80/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">mysql 数据库常用命令</span>
+                        <span class="hidden-mobile">TensorFlow基础</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2020/01/30/2020-1-30-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/">
+                        <span class="hidden-mobile">mysql 数据库常用命令</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
@@ -473,7 +461,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Django 项目部署&nbsp;",
+        "Django_rest_framework_jwt&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
