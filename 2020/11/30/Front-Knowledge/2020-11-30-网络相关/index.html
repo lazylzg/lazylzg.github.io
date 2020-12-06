@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.5k 字
+      3.9k 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      38
+      42
        分钟
     </span>
   
@@ -246,6 +246,24 @@
 <li>网络层：为数据包选择路由。</li>
 <li>数据链路层：传输有地址的帧。</li>
 <li>物理层：二进制的数据形式在物理媒体上传输数据。</li>
+</ul>
+<h2 id="五层协议"><a href="#五层协议" class="headerlink" title="五层协议"></a>五层协议</h2><ul>
+<li><p>应用层：提供用户接口，特指能够发起网络流量的程序，比如客户端程序：QQ、浏览器等；服务器程序：web服务器，邮件服务器。数据单位为报文</p>
+</li>
+<li><p>运输层：提供的是进程间的通用数据传输服务。由于应用层协议很多，定义通用的运输层协议就可以支持不断增多的应用层协议。运输层包括两种协议：TCP和UDP</p>
+</li>
+<li><p>网络层：为主机间提供数据传输服务，而运输层协议是为主机中的进程提供服务。网络层把运输层传递下来的报文段或者用户数据报封装成分组。（负责选择最佳路径规划IP地址）</p>
+<ul>
+<li>路由器查看数据包目标IP地址，根据路由表为数据包选择路径。路由表中的类目可以人工添加（静态路由）也可以动态生成（动态路由）</li>
+</ul>
+</li>
+<li><p>数据链路层：不同的网络类型，发送数据的机制不同，数据链路层就是将数据包封装成能够在不同的网络传输的帧。能够进行差错检验，但不纠错，监测处错误丢掉该帧。</p>
+<ul>
+<li>帧的开始和结束，透明传输，差错校验</li>
+</ul>
+</li>
+<li><p>物理层：物理层解决如何在连接各种计算机的传输媒体上传输数据比特流，而不是指具体的传输媒体。物理层的主要任务描述为：确定与传输媒体的接口的一些特性，机械、电气、功能和过程特性。</p>
+</li>
 </ul>
 <h2 id="cookie、sessionStorage、localStorage区别"><a href="#cookie、sessionStorage、localStorage区别" class="headerlink" title="cookie、sessionStorage、localStorage区别"></a>cookie、sessionStorage、localStorage区别</h2><ul>
 <li>生命周期数据有效期不同<ul>
