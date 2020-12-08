@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      44
+      45
        分钟
     </span>
   
@@ -386,33 +386,30 @@
 <p>505  HTTP Version not supported  服务器不支持请求的 HTTP 协议的版本，无法完成处理</p>
 <h2 id="如何处理不让别人盗用你的图片，访问你的服务器资源"><a href="#如何处理不让别人盗用你的图片，访问你的服务器资源" class="headerlink" title="如何处理不让别人盗用你的图片，访问你的服务器资源"></a>如何处理不让别人盗用你的图片，访问你的服务器资源</h2><ul>
 <li>http header，对 refer 做判断看来源是不是自己的网站，如果不是就拒绝。</li>
-<li>通过session校验，如果不通过特定服务生成 cookie 和 session 就不能请求得到资源。</li>
+<li>通过 session 校验，如果不通过特定服务生成 cookie 和 session 就不能请求得到资源。</li>
 </ul>
 <h2 id="HTTP-与-HTTPS-的区别"><a href="#HTTP-与-HTTPS-的区别" class="headerlink" title="HTTP 与 HTTPS 的区别"></a>HTTP 与 HTTPS 的区别</h2><blockquote>
 <p>HTTPS：建立一个信息安全通道，来确保数组的传输，确保网站的真实性</p>
 </blockquote>
 <ul>
-<li>HTTP 的 URL 以http:// 开头，而 HTTPS 的 URL 以https:// 开头</li>
-<li>HTTP 是不安全的，而 HTTPS 是安全的</li>
-<li>HTTP 标准端口是80 ，而 HTTPS 的标准端口是443</li>
-<li>在 OSI 网络模型中，HTTP 工作于应用层，而 HTTPS 的安全传输机制工作在传输层</li>
-<li>HTTP 无法加密，而 HTTPS 对传输的数据进行加密</li>
-<li>HTTP 无需证书，而 HTTPS 需要 CA 机构的颁发的SSL证书，费用较高</li>
+<li>HTTP 的 URL 以 http:// 开头，而 HTTPS 的 URL 以 https:// 开头。</li>
+<li>HTTP 是不安全的，而 HTTPS 是安全的。</li>
+<li>HTTP 标准端口是80 ，而 HTTPS 的标准端口是443。</li>
+<li>在 OSI 网络模型中，HTTP 工作于应用层，而 HTTPS 的安全传输机制工作在传输层。</li>
+<li>HTTP 无法加密，而 HTTPS 对传输的数据进行加密。</li>
+<li>HTTP 无需证书，而 HTTPS 需要 CA 机构的颁发的SSL证书，费用较高。</li>
 </ul>
 <h2 id="HTTPS-的优点"><a href="#HTTPS-的优点" class="headerlink" title="HTTPS 的优点"></a>HTTPS 的优点</h2><ul>
 <li>使用 HTTPS 协议可认证用户和服务器，确保数据发送到正确的客户机和服务器。</li>
 <li>可防止数据在传输过程中不被窃取、改变，确保数据的完整性。</li>
-<li>幅增加了中间人攻击的成本。</li>
+<li>https是现行架构下较安全的解决方案，增加了中间人攻击的成本。</li>
 </ul>
 <h2 id="HTTPS-协议的缺点"><a href="#HTTPS-协议的缺点" class="headerlink" title="HTTPS 协议的缺点"></a>HTTPS 协议的缺点</h2><ul>
-<li><p>https 握手阶段比较费时，会使页面加载时间延长50%，增加10%~20%的耗电。</p>
-</li>
-<li><p>https 缓存不如 http 高效，会增加数据开销。</p>
-</li>
-<li><p>SSL 证书收钱，功能越强大的证书费用越高。</p>
-</li>
-<li><p>SSL 证书需要绑定 IP，不能再同一个 ip 上绑定多个域名，ipv4 资源支持不了这种消耗。</p>
-</li>
+<li>https 握手阶段比较费时，会使页面加载时间延长50%，增加10%~20%的耗电。</li>
+<li>https 缓存不如 http 高效，会增加数据开销。</li>
+<li>SSL 证书收钱，功能越强大的证书费用越高。</li>
+<li>SSL 证书需要绑定 ip，不能再同一个 ip 上绑定多个域名，ipv4 资源支持不了这种消耗。</li>
+<li>HTTPS 协议的加密范围也比较有限。</li>
 </ul>
 <h2 id="什么是-HTTP-协议无状态协议？怎么解决？"><a href="#什么是-HTTP-协议无状态协议？怎么解决？" class="headerlink" title="什么是 HTTP 协议无状态协议？怎么解决？"></a>什么是 HTTP 协议无状态协议？怎么解决？</h2><ul>
 <li><p>无状态协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息也就是说，当客户端一次 HTTP 请求完成以后，客户端再发送一次 HTTP 请求，HTTP 并不知道当前客户端是一个”老用户“。</p>
@@ -421,7 +418,7 @@
 </li>
 </ul>
 <h2 id="常用的-HTTP-方法有哪些"><a href="#常用的-HTTP-方法有哪些" class="headerlink" title="常用的 HTTP 方法有哪些"></a>常用的 HTTP 方法有哪些</h2><ul>
-<li>GET：用于请求访问已经被URL（统一资源标识符）识别的资源，可以通过 URL 传参给服务器。</li>
+<li>GET：用于请求访问已经被 URL（统一资源标识符）识别的资源，可以通过 URL 传参给服务器。</li>
 <li>POST：用于传输信息给服务器，主要功能与 GET 方法类似，但一般推荐 POST 方式。</li>
 <li>PUT：传输文件，报文主体包含文件内容，保存到对应 URL 位置。</li>
 <li>HEAD：获取报文首部，与 GET 方法类似，只是不返回报文主体，一般用于验证 URL 是否有效。</li>
@@ -517,6 +514,12 @@
                 <div class="post-prevnext row">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2020/12/04/Front-Knowledge/2020-12-4-HTML/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HTML相关面试题</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
