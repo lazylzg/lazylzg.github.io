@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Lee">
   <meta name="keywords" content="">
-  <title>Django 项目部署 - Lee</title>
+  <title>JavaScript 中的相等操作符 ( 详解 [] == []、[] == ![]、{} == !{} ) - Lee</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -172,8 +172,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-01-30 15:34" pubdate>
-      2020年1月30日 下午
+    <time datetime="2020-12-12 21:25" pubdate>
+      2020年12月12日 晚上
     </time>
   </div>
 
@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      249 字
+      860 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      9
        分钟
     </span>
   
@@ -223,79 +223,67 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">Django 项目部署</h1>
+            <h1 style="display: none">JavaScript 中的相等操作符 ( 详解 [] == []、[] == ![]、{} == !{} )</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年12月4日 上午
+                  本文最后更新于：2020年12月12日 晚上
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h2 id="安装-nginx"><a href="#安装-nginx" class="headerlink" title="安装 nginx"></a>安装 nginx</h2><p><code>sudo apt-get install nginx</code></p>
-<h2 id="安装-mysql-数据库"><a href="#安装-mysql-数据库" class="headerlink" title="安装 mysql 数据库"></a>安装 mysql 数据库</h2><h2 id="配置虚拟环境"><a href="#配置虚拟环境" class="headerlink" title="配置虚拟环境"></a>配置虚拟环境</h2><p><code>virtualenv venv</code></p>
-<h2 id="激活虚拟环境"><a href="#激活虚拟环境" class="headerlink" title="激活虚拟环境"></a>激活虚拟环境</h2><p><code>source venv/bin/activate</code></p>
-<h2 id="安装-uwsgi"><a href="#安装-uwsgi" class="headerlink" title="安装 uwsgi"></a>安装 uwsgi</h2><p><code>pip install uwsgi</code></p>
-<p><code>sudo apt-get install mysql-server</code></p>
-<h2 id="生成-requirements-txt"><a href="#生成-requirements-txt" class="headerlink" title="生成 requirements.txt"></a>生成 requirements.txt</h2><p><code>pip freeze &gt; requirements.txt</code></p>
-<h2 id="安装-requirements-txt"><a href="#安装-requirements-txt" class="headerlink" title="安装 requirements.txt"></a>安装 requirements.txt</h2><p><code>pip install -r requirements.txt</code></p>
-<h2 id="配置-nginx-conf"><a href="#配置-nginx-conf" class="headerlink" title="配置 nginx.conf"></a>配置 nginx.conf</h2><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;
-    <span class="hljs-attribute">charset</span>      utf-<span class="hljs-number">8</span>;
-    <span class="hljs-attribute">listen</span>       <span class="hljs-number">443</span>;
-    <span class="hljs-attribute">server_name</span>  api.domian.com;
-    <span class="hljs-attribute">root</span> /var/www/api;
+              <p>ECMAScript 中的<strong>相等操作符</strong>由两个等于号 ( <strong>==</strong> ) 表示，如果两个操作数相等，则返回 true。</p>
+<p><strong>相等操作符会先转换操作数（通常称为强制转型）</strong>，然后比较它们的相等性。</p>
+<p>在转换不同的数据类型时，相等操作符遵循下列基本规则：</p>
+<ul>
+<li><p>如果有一个操作数是布尔值，则将其转换为数值再比较是否相等。false 转换为0，true 转换为1。</p>
+</li>
+<li><p>如果一个操作数是字符串，另一个操作数是数值，在比较之前先将字符串转换为数值，再比较是否相等。</p>
+</li>
+<li><p>如果一个操作数是对象，另一个操作数不是，则调用对象的 valueOf() 方法获得其原始值，再根据前面的规则进行比较。</p>
+<p>在进行比较时，这两个操作符会遵循如下规则：</p>
+<ul>
+<li>null 和 undefined 相等。</li>
+<li>null 和 undefined 不能转换为其他类型的值再进行比较。</li>
+<li>如果任一操作数是 NaN，则相等操作符返回 false，不相等操作符返回 true。即使两个操作数都是 NaN，相等操作符也返回 false，因为按照规则 <strong>NaN 不等于 NaN</strong>。</li>
+<li>如果两个操作数都是对象，则比较它们是不是同一个对象。如果指向同一个对象，则相等操作符返回 true。否则，两者不相等。</li>
+</ul>
+</li>
+</ul>
+<h2 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a><strong>基本规则</strong></h2><p>如果相等操作符两边的操作数，不包含 null 或者 undefined，且两个操作数不全是对象，在执行相等比较之前，会先调用 Number() 将两个操作数强制转为 Number 类型，然后进行比较，所以在使用相等操作符的时候，会有以下情况：</p>
+<pre><code class="hljs javascript"><span class="hljs-string">&#x27;55&#x27;</span> == <span class="hljs-number">55</span>;       <span class="hljs-comment">//true</span>
+<span class="hljs-literal">false</span> == <span class="hljs-number">0</span>;       <span class="hljs-comment">//true</span>
+<span class="hljs-string">&quot;wise&quot;</span> == <span class="hljs-number">3</span>;      <span class="hljs-comment">//false （ Number(&quot;wise&quot;) -&gt; NaN ）</span>
+[] == <span class="hljs-number">0</span>;          <span class="hljs-comment">//true  （ Number([]) -&gt; 0 ）</span></code></pre>
 
-    <span class="hljs-attribute">ssl</span> <span class="hljs-literal">on</span>;
-    <span class="hljs-attribute">ssl_certificate</span> /var/www/api/1_api.domian.com_bundle.crt;
-    <span class="hljs-attribute">ssl_certificate_key</span> /var/www/api/2_api.domian.com.key;
-    <span class="hljs-attribute">ssl_session_timeout</span> <span class="hljs-number">5m</span>;
-    <span class="hljs-attribute">ssl_protocols</span> TLSv1 TLSv1.<span class="hljs-number">1</span> TLSv1.<span class="hljs-number">2</span>;
-    <span class="hljs-attribute">ssl_ciphers</span> ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
-    <span class="hljs-attribute">ssl_prefer_server_ciphers</span> <span class="hljs-literal">on</span>;
+<p>但是在特殊情况下，也就是两边都有对象的时候，会产生看似不合理的结果：</p>
+<pre><code class="hljs javascript"><span class="hljs-literal">NaN</span> == <span class="hljs-literal">NaN</span>;  <span class="hljs-comment">//false</span>
+[] == [];    <span class="hljs-comment">//false</span>
+[] == ![];   <span class="hljs-comment">//true</span>
+&#123;&#125; == &#123;&#125;;    <span class="hljs-comment">//false</span>
+&#123;&#125; == !&#123;&#125;;   <span class="hljs-comment">//false</span></code></pre>
 
-    <span class="hljs-attribute">location</span> / &#123;
-        <span class="hljs-attribute">include</span>   uwsgi_params;
-        <span class="hljs-attribute">uwsgi_pass</span>   <span class="hljs-number">127.0.0.1:8080</span>;
-    &#125;
-    <span class="hljs-comment"># 指向django的media目录</span>
-    <span class="hljs-attribute">location</span> /media  &#123;
-        <span class="hljs-attribute">alias</span> /var/www/api/media; 
-    &#125;
-    <span class="hljs-comment"># 指向django的static目录</span>
-    <span class="hljs-attribute">location</span> /static &#123;
-        <span class="hljs-attribute">alias</span> /var/www/api/static; 
-    &#125;
-&#125;
-<span class="hljs-section">server</span> &#123;
-    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;
-    <span class="hljs-attribute">server_name</span> course.zguolee.cn; 
-    <span class="hljs-attribute">rewrite</span><span class="hljs-regexp"> ^(.*)$</span> https://<span class="hljs-variable">$host</span><span class="hljs-variable">$1</span> <span class="hljs-literal">permanent</span>;
-    <span class="hljs-attribute">location</span> / &#123;
-        <span class="hljs-attribute">index</span> index.html index.htm;
-    &#125;
-&#125;</code></pre>
+<h2 id="和"><a href="#和" class="headerlink" title="[] == [] 和 {} == {}"></a><strong>[] == [] 和 {} == {}</strong></h2><p>在 JavaScript 中，<strong>Object、Array、Function、RegExp、Date</strong> <strong>都是引用类型</strong></p>
+<p>声明引用类型的时候，变量名保存在 js 的<strong>栈内存</strong>里面，而对应的值保存在<strong>堆内存</strong>里面</p>
+<p>而这个变量在栈内存中实际保存的是：<strong>这个值在堆内存中的地址</strong>，也就是<strong>指针</strong></p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = &#123;&#125;;
+<span class="hljs-keyword">var</span> b = &#123;&#125;;</code></pre>
 
-<h2 id="配置-uwsgi-ini"><a href="#配置-uwsgi-ini" class="headerlink" title="配置 uwsgi.ini"></a>配置 uwsgi.ini</h2><pre><code class="hljs ini"><span class="hljs-section">[uwsgi]</span>
-<span class="hljs-comment"># variables</span>
-<span class="hljs-attr">projectname</span> = projectname
-<span class="hljs-attr">projectdomain</span> = api.domian.com
-<span class="hljs-attr">base</span> = /var/www/api
+<p>上面的代码中，声明变量 a 的时候，在堆内存中存储了一个 Object，声明变量 b 的时候，又存储了一个新的 Object。</p>
+<p>虽然 a 和 b 都保存了一个 Object，但这是两个独立的 Object，它们的地址是不同的。</p>
+<p><strong>如果两个对象指向同一个对象，相等操作符返回 true</strong></p>
+<p>所以 <strong>{} == {}</strong> 的结果是 false，同样的， <strong>[] == []</strong> 的结果也是 false</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> c = b;
+b == c;   <span class="hljs-comment">//true（变量c保存的是b的指针，它们指向同一个对象）</span></code></pre>
 
-<span class="hljs-comment"># config</span>
-<span class="hljs-attr">master</span> = <span class="hljs-literal">true</span>
-<span class="hljs-attr">protocol</span> = uwsgi
-<span class="hljs-attr">env</span> = DJANGO_SETTINGS_MODULE=%(projectname).settings
-<span class="hljs-attr">pythonpath</span> = %(base)/%(projectname)
-<span class="hljs-attr">module</span> = %(projectname).wsgi
-<span class="hljs-attr">socket</span> = <span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">8080</span>   
-<span class="hljs-comment"># 存进程id的文件</span>
-<span class="hljs-attr">pidfile</span>=uwsgi.pid
-<span class="hljs-comment"># 日志文件</span>
-<span class="hljs-attr">daemonize</span>=uwsgi.log</code></pre>
+<h2 id="和-1"><a href="#和-1" class="headerlink" title="[] == ![] 和 {} == !{}"></a><strong>[] == ![] 和 {} == !{}</strong></h2><p>ECMAScript 中规定，<strong>逻辑非 (!)</strong> 的优先级高于<strong>相等操作符 ( == )**，在比较 [] == ![] 的时候，先计算 ![] 得到布尔值 false，所以实际上比较的是 **[] == false</strong>，然后将两个操作数转为数值类型：</p>
+<pre><code class="hljs javascript"><span class="hljs-built_in">Number</span>([]) == <span class="hljs-built_in">Number</span>(<span class="hljs-literal">false</span>);   <span class="hljs-comment">// -&gt;  0 == 0  -&gt;  true</span></code></pre>
 
-<p><code>python manage.py collectstatic</code></p>
-<p><code>service nginx start</code> 启动 <strong>nginx</strong> 转发 </p>
-<p><code>uwsgi --ini uwsgi.ini</code></p>
+<p>在比较 {} == !{} 的时候，也是遵守同样的规则：</p>
+<pre><code class="hljs javascript">&#123;&#125; == !&#123;&#125;  -&gt;  &#123;&#125; == <span class="hljs-literal">false</span>  -&gt;  <span class="hljs-built_in">Number</span>(&#123;&#125;) == <span class="hljs-built_in">Number</span>(<span class="hljs-literal">false</span>)  -&gt;  <span class="hljs-literal">NaN</span> == <span class="hljs-number">0</span></code></pre>
+
+<p><strong>如果有一个操作数是 NaN，相等操作符返回 false</strong></p>
+<p>所以 {} == !{} 的结果是 false。</p>
 
             </div>
             <hr>
@@ -305,7 +293,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+                      <a class="hover-with-bg" href="/categories/%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/">知识复习</a>
                     
                   </div>
                 
@@ -313,9 +301,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Dajngo2-2/">Dajngo2.2</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Python3-7/">Python3.7</a>
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
                     
                   </div>
                 
@@ -328,15 +314,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/01/30/DataBase/2020-1-30-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">mysql 数据库常用命令</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2020/12/12/Front-Knowledge/2020-12-12-JavaScript/">
+                        <span class="hidden-mobile">JavaScript相关知识点</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
@@ -479,7 +465,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Django 项目部署&nbsp;",
+        "JavaScript 中的相等操作符 ( 详解 [] == []、[] == ![]、{} == !{} )&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

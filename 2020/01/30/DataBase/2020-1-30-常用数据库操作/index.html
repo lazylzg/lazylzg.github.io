@@ -245,10 +245,10 @@
 <p>授权test用户拥有testDB数据库的所有权限（某个数据库的所有权限）：</p>
 <p><code>grant all privileges on testDB.* to &#39;test&#39;@&#39;localhost&#39; identified by &#39;1234&#39;;</code></p>
 <p><code>mysql&gt;flush privileges;</code></p>
-<h1 id="mysql5-7-解决不用密码也能登录"><a href="#mysql5-7-解决不用密码也能登录" class="headerlink" title="mysql5.7 解决不用密码也能登录"></a>mysql5.7 解决不用密码也能登录</h1><pre><code class="hljs sql"><span class="hljs-keyword">use</span> mysql;
-<span class="hljs-keyword">update</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">set</span> authentication_string=<span class="hljs-keyword">PASSWORD</span>(<span class="hljs-string">&quot;密码&quot;</span>) <span class="hljs-keyword">where</span> <span class="hljs-keyword">user</span>=<span class="hljs-string">&#x27;root&#x27;</span>;
-<span class="hljs-keyword">update</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">set</span> <span class="hljs-keyword">plugin</span>=<span class="hljs-string">&quot;mysql_native_password&quot;</span>;
-<span class="hljs-keyword">flush</span> <span class="hljs-keyword">privileges</span>;
+<h1 id="mysql5-7-解决不用密码也能登录"><a href="#mysql5-7-解决不用密码也能登录" class="headerlink" title="mysql5.7 解决不用密码也能登录"></a>mysql5.7 解决不用密码也能登录</h1><pre><code class="hljs routeros">use mysql;
+update<span class="hljs-built_in"> user </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">authentication_string</span>=PASSWORD(&quot;密码&quot;) where <span class="hljs-attribute">user</span>=<span class="hljs-string">&#x27;root&#x27;</span>;
+update<span class="hljs-built_in"> user </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">plugin</span>=<span class="hljs-string">&quot;mysql_native_password&quot;</span>;
+flush privileges;
 quit;</code></pre>
 
 

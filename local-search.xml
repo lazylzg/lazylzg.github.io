@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>JavaScript 中的相等操作符 ( 详解 [] == []、[] == ![]、{} == !{} )</title>
+    <link href="/2020/12/12/JavaScript/2020-12-12-JavaScript%20%E4%B8%AD%E7%9A%84%E7%9B%B8%E7%AD%89%E6%93%8D%E4%BD%9C%E7%AC%A6/"/>
+    <url>/2020/12/12/JavaScript/2020-12-12-JavaScript%20%E4%B8%AD%E7%9A%84%E7%9B%B8%E7%AD%89%E6%93%8D%E4%BD%9C%E7%AC%A6/</url>
+    
+    <content type="html"><![CDATA[<p>ECMAScript 中的<strong>相等操作符</strong>由两个等于号 ( <strong>==</strong> ) 表示，如果两个操作数相等，则返回 true。</p><p><strong>相等操作符会先转换操作数（通常称为强制转型）</strong>，然后比较它们的相等性。</p><p>在转换不同的数据类型时，相等操作符遵循下列基本规则：</p><ul><li><p>如果有一个操作数是布尔值，则将其转换为数值再比较是否相等。false 转换为0，true 转换为1。</p></li><li><p>如果一个操作数是字符串，另一个操作数是数值，在比较之前先将字符串转换为数值，再比较是否相等。</p></li><li><p>如果一个操作数是对象，另一个操作数不是，则调用对象的 valueOf() 方法获得其原始值，再根据前面的规则进行比较。</p><p>在进行比较时，这两个操作符会遵循如下规则：</p><ul><li>null 和 undefined 相等。</li><li>null 和 undefined 不能转换为其他类型的值再进行比较。</li><li>如果任一操作数是 NaN，则相等操作符返回 false，不相等操作符返回 true。即使两个操作数都是 NaN，相等操作符也返回 false，因为按照规则 <strong>NaN 不等于 NaN</strong>。</li><li>如果两个操作数都是对象，则比较它们是不是同一个对象。如果指向同一个对象，则相等操作符返回 true。否则，两者不相等。</li></ul></li></ul><h2 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a><strong>基本规则</strong></h2><p>如果相等操作符两边的操作数，不包含 null 或者 undefined，且两个操作数不全是对象，在执行相等比较之前，会先调用 Number() 将两个操作数强制转为 Number 类型，然后进行比较，所以在使用相等操作符的时候，会有以下情况：</p><pre><code class="hljs javascript"><span class="hljs-string">&#x27;55&#x27;</span> == <span class="hljs-number">55</span>;       <span class="hljs-comment">//true</span><span class="hljs-literal">false</span> == <span class="hljs-number">0</span>;       <span class="hljs-comment">//true</span><span class="hljs-string">&quot;wise&quot;</span> == <span class="hljs-number">3</span>;      <span class="hljs-comment">//false （ Number(&quot;wise&quot;) -&gt; NaN ）</span>[] == <span class="hljs-number">0</span>;          <span class="hljs-comment">//true  （ Number([]) -&gt; 0 ）</span></code></pre><p>但是在特殊情况下，也就是两边都有对象的时候，会产生看似不合理的结果：</p><pre><code class="hljs javascript"><span class="hljs-literal">NaN</span> == <span class="hljs-literal">NaN</span>;  <span class="hljs-comment">//false</span>[] == [];    <span class="hljs-comment">//false</span>[] == ![];   <span class="hljs-comment">//true</span>&#123;&#125; == &#123;&#125;;    <span class="hljs-comment">//false</span>&#123;&#125; == !&#123;&#125;;   <span class="hljs-comment">//false</span></code></pre><h2 id="和"><a href="#和" class="headerlink" title="[] == [] 和 {} == {}"></a><strong>[] == [] 和 {} == {}</strong></h2><p>在 JavaScript 中，<strong>Object、Array、Function、RegExp、Date</strong> <strong>都是引用类型</strong></p><p>声明引用类型的时候，变量名保存在 js 的<strong>栈内存</strong>里面，而对应的值保存在<strong>堆内存</strong>里面</p><p>而这个变量在栈内存中实际保存的是：<strong>这个值在堆内存中的地址</strong>，也就是<strong>指针</strong></p><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = &#123;&#125;;<span class="hljs-keyword">var</span> b = &#123;&#125;;</code></pre><p>上面的代码中，声明变量 a 的时候，在堆内存中存储了一个 Object，声明变量 b 的时候，又存储了一个新的 Object。</p><p>虽然 a 和 b 都保存了一个 Object，但这是两个独立的 Object，它们的地址是不同的。</p><p><strong>如果两个对象指向同一个对象，相等操作符返回 true</strong></p><p>所以 <strong>{} == {}</strong> 的结果是 false，同样的， <strong>[] == []</strong> 的结果也是 false</p><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> c = b;b == c;   <span class="hljs-comment">//true（变量c保存的是b的指针，它们指向同一个对象）</span></code></pre><h2 id="和-1"><a href="#和-1" class="headerlink" title="[] == ![] 和 {} == !{}"></a><strong>[] == ![] 和 {} == !{}</strong></h2><p>ECMAScript 中规定，<strong>逻辑非 (!)</strong> 的优先级高于<strong>相等操作符 ( == )**，在比较 [] == ![] 的时候，先计算 ![] 得到布尔值 false，所以实际上比较的是 **[] == false</strong>，然后将两个操作数转为数值类型：</p><pre><code class="hljs javascript"><span class="hljs-built_in">Number</span>([]) == <span class="hljs-built_in">Number</span>(<span class="hljs-literal">false</span>);   <span class="hljs-comment">// -&gt;  0 == 0  -&gt;  true</span></code></pre><p>在比较 {} == !{} 的时候，也是遵守同样的规则：</p><pre><code class="hljs javascript">&#123;&#125; == !&#123;&#125;  -&gt;  &#123;&#125; == <span class="hljs-literal">false</span>  -&gt;  <span class="hljs-built_in">Number</span>(&#123;&#125;) == <span class="hljs-built_in">Number</span>(<span class="hljs-literal">false</span>)  -&gt;  <span class="hljs-literal">NaN</span> == <span class="hljs-number">0</span></code></pre><p><strong>如果有一个操作数是 NaN，相等操作符返回 false</strong></p><p>所以 {} == !{} 的结果是 false。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>知识复习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>JavaScript相关知识点</title>
+    <link href="/2020/12/12/Front-Knowledge/2020-12-12-JavaScript/"/>
+    <url>/2020/12/12/Front-Knowledge/2020-12-12-JavaScript/</url>
+    
+    <content type="html"><![CDATA[<h2 id="介绍-JavaScript-的基本数据类型"><a href="#介绍-JavaScript-的基本数据类型" class="headerlink" title="介绍 JavaScript 的基本数据类型"></a>介绍 JavaScript 的基本数据类型</h2><p>六种基本数据类型（原始类型），分别是 Undefined、Null、Boolean、Number、String，还有在 ES6 中新增的 Symbol 和 ES10 中新增的 BigInt 类型。还有一种复杂的数据类型 Object（对象）。</p><h2 id="JavaScript-有几种类型的值？"><a href="#JavaScript-有几种类型的值？" class="headerlink" title="JavaScript 有几种类型的值？"></a>JavaScript 有几种类型的值？</h2><p>可以分为两种类型的值，一种是基本数据类型，一种是复杂数据类型。</p><p>基本数据类型指原始数据类型（Undefined、Null、Boolean、Number、String）</p><p>复杂数据类型指引用数据类型（对象、数组和函数）</p><p>两种类型间的主要区别是它们的存储位置不同，基本数据类型的值直接保存在栈中，而复杂数据类型的值保存在堆中，通过使用在栈中保存对应的指针来获取堆中的值。</p><h2 id="什么是堆？什么是栈？它们之间有什么区别和联系？"><a href="#什么是堆？什么是栈？它们之间有什么区别和联系？" class="headerlink" title="什么是堆？什么是栈？它们之间有什么区别和联系？"></a>什么是堆？什么是栈？它们之间有什么区别和联系？</h2><ul><li>堆和栈的概念存在于数据结构中和操作系统内存中。</li><li>在数据结构中，栈中数据的存取方式为先进后出。而堆是一个优先队列，是按优先级来进行排序的，优先级可以按照大小来规定。完全二叉树是堆的一种实现方式。</li><li>在操作系统中，内存被分为栈区和堆区。</li><li>栈区内存由编译器自动分配释放，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。</li><li>堆区内存一般由程序员分配释放，若程序员不释放，程序结束时可能由垃圾回收机制回收。</li></ul><h2 id="null-和-undefined-的区别？"><a href="#null-和-undefined-的区别？" class="headerlink" title="null 和 undefined 的区别？"></a>null 和 undefined 的区别？</h2><ul><li>Undefined 和 Null 都是基本数据类型，这两个基本数据类型分别都只有一个值，就是 undefined 和 null。</li><li>undefined 代表的含义是未定义，null 代表的含义是空对象。一般变量声明了但还没有定义的时候会返回 undefined，null 主要用于赋值给一些可能会返回对象的变量，作为初始化。</li><li>undefined 在 JavaScript 中不是一个保留字，这意味着可以使用 undefined 来作为一个变量名，这样的做法是非常危险的，它会影响我们对 undefined 值的判断。</li><li>当我们对两种类型使用 typeof 进行判断的时候，Null 类型化会返回 “object”，这是一个历史遗留的问题。两种类型的值使用等于（==）运算符比较会返回 true，使用全等（===）运算符比较会返回 false。</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>知识复习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>HTML相关知识点</title>
     <link href="/2020/12/04/Front-Knowledge/2020-12-4-HTML/"/>
     <url>/2020/12/04/Front-Knowledge/2020-12-4-HTML/</url>
@@ -138,10 +188,10 @@
   
   <entry>
     <title>mysql 数据库常用命令</title>
-    <link href="/2020/01/30/2020-1-30-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/"/>
-    <url>/2020/01/30/2020-1-30-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/</url>
+    <link href="/2020/01/30/DataBase/2020-1-30-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/"/>
+    <url>/2020/01/30/DataBase/2020-1-30-%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/</url>
     
-    <content type="html"><![CDATA[<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p><code>mysql -u root -p</code></p><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p><code> CREATE DATABASE &lt;数据库名&gt;;</code></p><p><code>create database &lt;数据库名&gt; default character set utf8mb4 collate utf8mb4_unicode_ci;</code></p><h3 id="选择数据库"><a href="#选择数据库" class="headerlink" title="选择数据库"></a>选择数据库</h3><p><code>USE &lt;数据库名&gt;;</code></p><h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><p><code>drop database &lt;数据库名&gt;;</code></p><h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><p><code>CREATE USER &#39;&lt;用户名&gt;&#39;@&#39;host&#39; IDENTIFIED BY &#39;&lt;密码&gt;&#39;;</code><br>host：指定该用户在哪个主机上可以登陆，如果是本地用户可用 localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符%</p><h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><p><code>Delete FROM user Where User=&#39;&lt;用户名&gt;&#39; and Host=&#39;localhost&#39;;</code></p><h3 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h3><p><code>GRANT privileges ON &lt;数据库名&gt;.&lt;表名&gt; TO &#39;username&#39;@&#39;host&#39;</code></p><p>privileges：用户的操作权限，如SELECT，INSERT，UPDATE等，如果要授予所的权限则使用ALL</p><p>如果要授予该用户对所有数据库和表的相应操作权限则可用<code>*</code>表示，如<code>*.*</code></p><p>授权test用户拥有testDB数据库的所有权限（某个数据库的所有权限）：</p><p><code>grant all privileges on testDB.* to &#39;test&#39;@&#39;localhost&#39; identified by &#39;1234&#39;;</code></p><p><code>mysql&gt;flush privileges;</code></p><h1 id="mysql5-7-解决不用密码也能登录"><a href="#mysql5-7-解决不用密码也能登录" class="headerlink" title="mysql5.7 解决不用密码也能登录"></a>mysql5.7 解决不用密码也能登录</h1><pre><code class="hljs sql"><span class="hljs-keyword">use</span> mysql;<span class="hljs-keyword">update</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">set</span> authentication_string=<span class="hljs-keyword">PASSWORD</span>(<span class="hljs-string">&quot;密码&quot;</span>) <span class="hljs-keyword">where</span> <span class="hljs-keyword">user</span>=<span class="hljs-string">&#x27;root&#x27;</span>;<span class="hljs-keyword">update</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">set</span> <span class="hljs-keyword">plugin</span>=<span class="hljs-string">&quot;mysql_native_password&quot;</span>;<span class="hljs-keyword">flush</span> <span class="hljs-keyword">privileges</span>;quit;</code></pre>]]></content>
+    <content type="html"><![CDATA[<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p><code>mysql -u root -p</code></p><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><p><code> CREATE DATABASE &lt;数据库名&gt;;</code></p><p><code>create database &lt;数据库名&gt; default character set utf8mb4 collate utf8mb4_unicode_ci;</code></p><h3 id="选择数据库"><a href="#选择数据库" class="headerlink" title="选择数据库"></a>选择数据库</h3><p><code>USE &lt;数据库名&gt;;</code></p><h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><p><code>drop database &lt;数据库名&gt;;</code></p><h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><p><code>CREATE USER &#39;&lt;用户名&gt;&#39;@&#39;host&#39; IDENTIFIED BY &#39;&lt;密码&gt;&#39;;</code><br>host：指定该用户在哪个主机上可以登陆，如果是本地用户可用 localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符%</p><h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><p><code>Delete FROM user Where User=&#39;&lt;用户名&gt;&#39; and Host=&#39;localhost&#39;;</code></p><h3 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h3><p><code>GRANT privileges ON &lt;数据库名&gt;.&lt;表名&gt; TO &#39;username&#39;@&#39;host&#39;</code></p><p>privileges：用户的操作权限，如SELECT，INSERT，UPDATE等，如果要授予所的权限则使用ALL</p><p>如果要授予该用户对所有数据库和表的相应操作权限则可用<code>*</code>表示，如<code>*.*</code></p><p>授权test用户拥有testDB数据库的所有权限（某个数据库的所有权限）：</p><p><code>grant all privileges on testDB.* to &#39;test&#39;@&#39;localhost&#39; identified by &#39;1234&#39;;</code></p><p><code>mysql&gt;flush privileges;</code></p><h1 id="mysql5-7-解决不用密码也能登录"><a href="#mysql5-7-解决不用密码也能登录" class="headerlink" title="mysql5.7 解决不用密码也能登录"></a>mysql5.7 解决不用密码也能登录</h1><pre><code class="hljs routeros">use mysql;update<span class="hljs-built_in"> user </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">authentication_string</span>=PASSWORD(&quot;密码&quot;) where <span class="hljs-attribute">user</span>=<span class="hljs-string">&#x27;root&#x27;</span>;update<span class="hljs-built_in"> user </span><span class="hljs-builtin-name">set</span> <span class="hljs-attribute">plugin</span>=<span class="hljs-string">&quot;mysql_native_password&quot;</span>;flush privileges;quit;</code></pre>]]></content>
     
     
     <categories>

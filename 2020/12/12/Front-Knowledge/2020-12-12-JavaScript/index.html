@@ -17,10 +17,20 @@
   <meta name="description" content="">
   <meta name="author" content="Lee">
   <meta name="keywords" content="">
-  <title>归档 - Lee</title>
+  <title>JavaScript相关知识点 - Lee</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -43,7 +53,7 @@
 
 
 <body>
-  <header style="height: 40vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -159,6 +169,40 @@
             </span>
 
             
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-12-12 21:00" pubdate>
+      2020年12月12日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      635 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      6
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
           
@@ -169,43 +213,114 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 9 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/03/29/2020-3-29-TensorFlow%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">TensorFlow基础</span>
-      <time style="float: right;">03-29</time>
-    </a>
-  
-    
-    <a href="/2020/03/10/Django/2020-3-10-Django_rest_framework_jwt/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Django_rest_framework_jwt</span>
-      <time style="float: right;">03-10</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">JavaScript相关知识点</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年12月12日 晚上
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h2 id="介绍-JavaScript-的基本数据类型"><a href="#介绍-JavaScript-的基本数据类型" class="headerlink" title="介绍 JavaScript 的基本数据类型"></a>介绍 JavaScript 的基本数据类型</h2><p>六种基本数据类型（原始类型），分别是 Undefined、Null、Boolean、Number、String，还有在 ES6 中新增的 Symbol 和 ES10 中新增的 BigInt 类型。还有一种复杂的数据类型 Object（对象）。</p>
+<h2 id="JavaScript-有几种类型的值？"><a href="#JavaScript-有几种类型的值？" class="headerlink" title="JavaScript 有几种类型的值？"></a>JavaScript 有几种类型的值？</h2><p>可以分为两种类型的值，一种是基本数据类型，一种是复杂数据类型。</p>
+<p>基本数据类型指原始数据类型（Undefined、Null、Boolean、Number、String）</p>
+<p>复杂数据类型指引用数据类型（对象、数组和函数）</p>
+<p>两种类型间的主要区别是它们的存储位置不同，基本数据类型的值直接保存在栈中，而复杂数据类型的值保存在堆中，通过使用在栈中保存对应的指针来获取堆中的值。</p>
+<h2 id="什么是堆？什么是栈？它们之间有什么区别和联系？"><a href="#什么是堆？什么是栈？它们之间有什么区别和联系？" class="headerlink" title="什么是堆？什么是栈？它们之间有什么区别和联系？"></a>什么是堆？什么是栈？它们之间有什么区别和联系？</h2><ul>
+<li>堆和栈的概念存在于数据结构中和操作系统内存中。</li>
+<li>在数据结构中，栈中数据的存取方式为先进后出。而堆是一个优先队列，是按优先级来进行排序的，优先级可以按照大小来规定。完全二叉树是堆的一种实现方式。</li>
+<li>在操作系统中，内存被分为栈区和堆区。</li>
+<li>栈区内存由编译器自动分配释放，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。</li>
+<li>堆区内存一般由程序员分配释放，若程序员不释放，程序结束时可能由垃圾回收机制回收。</li>
+</ul>
+<h2 id="null-和-undefined-的区别？"><a href="#null-和-undefined-的区别？" class="headerlink" title="null 和 undefined 的区别？"></a>null 和 undefined 的区别？</h2><ul>
+<li>Undefined 和 Null 都是基本数据类型，这两个基本数据类型分别都只有一个值，就是 undefined 和 null。</li>
+<li>undefined 代表的含义是未定义，null 代表的含义是空对象。一般变量声明了但还没有定义的时候会返回 undefined，null 主要用于赋值给一些可能会返回对象的变量，作为初始化。</li>
+<li>undefined 在 JavaScript 中不是一个保留字，这意味着可以使用 undefined 来作为一个变量名，这样的做法是非常危险的，它会影响我们对 undefined 值的判断。</li>
+<li>当我们对两种类型使用 typeof 进行判断的时候，Null 类型化会返回 “object”，这是一个历史遗留的问题。两种类型的值使用等于（==）运算符比较会返回 true，使用全等（===）运算符比较会返回 false。</li>
+</ul>
 
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%9F%A5%E8%AF%86%E5%A4%8D%E4%B9%A0/">知识复习</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/12/12/JavaScript/2020-12-12-JavaScript%20%E4%B8%AD%E7%9A%84%E7%9B%B8%E7%AD%89%E6%93%8D%E4%BD%9C%E7%AC%A6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JavaScript 中的相等操作符 ( 详解 [] == []、[] == ![]、{} == !{} )</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/12/04/Front-Knowledge/2020-12-4-HTML/">
+                        <span class="hidden-mobile">HTML相关知识点</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
   </main>
 
@@ -290,6 +405,31 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
 
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
@@ -297,7 +437,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "JavaScript相关知识点&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -312,6 +452,21 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
 
 
   <script  src="/js/local-search.js" ></script>
@@ -325,6 +480,20 @@
   </script>
 
 
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 
