@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.8k 字
+      3.9k 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      19
+      42
        分钟
     </span>
   
@@ -227,12 +227,21 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年12月13日 晚上
+                  本文最后更新于：2020年12月14日 晚上
                 
               </p>
             
             <div class="markdown-body" id="post-body">
               <h2 id="介绍-JavaScript-的基本数据类型"><a href="#介绍-JavaScript-的基本数据类型" class="headerlink" title="介绍 JavaScript 的基本数据类型"></a>介绍 JavaScript 的基本数据类型</h2><p>六种基本数据类型（原始类型），分别是 Undefined、Null、Boolean、Number、String、Symbol（ES6 中新增），还有一种复杂的数据类型 Object（对象）。</p>
+<h2 id="let、var、const-的区别，谈谈如何冻结变量"><a href="#let、var、const-的区别，谈谈如何冻结变量" class="headerlink" title="let、var、const 的区别，谈谈如何冻结变量"></a>let、var、const 的区别，谈谈如何冻结变量</h2><ul>
+<li><strong>var</strong> 没有块级作用域，支持变量提升。</li>
+<li><strong>let</strong> 有块级作用域，不支持变量提升。不允许重复声明，暂存性死区。</li>
+<li><strong>const</strong> 有块级作用域，不支持变量提升，不允许重复声明，暂存性死区。声明一个变量一旦声明就不能改变，改变报错。const 保证的变量的<strong>内存地址</strong>不得改动。如果想要将对象冻结的话，使用Object.freeze()方法。</li>
+</ul>
+<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> foo = <span class="hljs-built_in">Object</span>.freeze(&#123;&#125;);
+foo.prop = <span class="hljs-number">123</span>;
+<span class="hljs-built_in">console</span>.log(foo.prop);<span class="hljs-comment">//混杂模式undefined,不起作用</span></code></pre>
+
 <h2 id="JavaScript-有几种类型的值？"><a href="#JavaScript-有几种类型的值？" class="headerlink" title="JavaScript 有几种类型的值？"></a>JavaScript 有几种类型的值？</h2><p>可以分为两种类型的值，一种是基本数据类型，一种是复杂数据类型。</p>
 <p>基本数据类型指原始数据类型（Undefined、Null、Boolean、Number、String）。</p>
 <p>复杂数据类型指引用数据类型（对象、数组和函数）。</p>
@@ -289,6 +298,162 @@
 </li>
 <li><p>异步，执行完函数或方法后，不必阻塞性地等待返回值或消息，只需要向系统委托一个异步过程，那么当系统接收到返回值或消息时，系统会自动触发委托的异步过程，从而完成一个完整的流程。 </p>
 </li>
+</ul>
+<h2 id="谈谈对闭包的理解，闭包的用途，闭包的缺点"><a href="#谈谈对闭包的理解，闭包的用途，闭包的缺点" class="headerlink" title="谈谈对闭包的理解，闭包的用途，闭包的缺点"></a>谈谈对闭包的理解，闭包的用途，闭包的缺点</h2><ul>
+<li>闭包是指有权访问另外一个函数作用域中的变量的函数</li>
+<li>闭包的用途：</li>
+</ul>
+<ol>
+<li>设计私有的方法和变量。</li>
+<li>匿名函数最大的用途是创建闭包，并且还可以构建命名空间，以减少全局变量的使用。从而使用闭包模块化代码，减少全局变量的污染。</li>
+</ol>
+<ul>
+<li>闭包的缺点：</li>
+</ul>
+<ol>
+<li>闭包会使得函数中的变量都被保存在内存中，滥用闭包可能导致内存泄漏。解决方法是在函数退出之前，将不使用的局部变量全删了。</li>
+<li>闭包会在父函数外部，改变父函数内部变量的值。</li>
+</ol>
+<h2 id="谈谈-js-的垃圾回收机制"><a href="#谈谈-js-的垃圾回收机制" class="headerlink" title="谈谈 js 的垃圾回收机制"></a>谈谈 js 的垃圾回收机制</h2><ul>
+<li>JavaScript拥有自动的垃圾回收机制，当一个值，在内存中失去引用时，垃圾回收机制会根据特殊的算法找到它，并将其回收，释放内存。</li>
+<li><strong>标记清除算法：</strong></li>
+</ul>
+<ol>
+<li>标记阶段，垃圾回收器会从根对象开始遍历。每一个可以从根对象访问到的对象都会被添加一个标识，于是这个对象就被标识为可到达对象。</li>
+<li>清除阶段，垃圾回收器会对堆内存从头到尾进行线性遍历，如果发现有对象没有被标识为可到达对象，那么就将此对象占用的内存回收，并且将原来标记为可到达对象的标识清除，以便进行下一次垃圾回收操作。</li>
+<li>缺点：垃圾收集后有可能会造成大量的<strong>内存碎片</strong>。</li>
+</ol>
+<ul>
+<li><strong>引用计数算法：</strong></li>
+</ul>
+<ol>
+<li>引用计数的含义是跟踪记录每个值被引用的次数，如果没有引用指向该对象（零引用），对象将被垃圾回收机制回收。</li>
+<li>缺点： 循环引用没法回收。</li>
+</ol>
+<h2 id="ajax-的用途，ajax-请求的五种状态"><a href="#ajax-的用途，ajax-请求的五种状态" class="headerlink" title="ajax 的用途，ajax 请求的五种状态"></a>ajax 的用途，ajax 请求的五种状态</h2><ul>
+<li>AJAX 是“ Asynchronous JavaScript And XML ”的缩写，是一种实现<strong>无页面刷新</strong>获取服务器数据的混合技术。</li>
+<li><strong>XMLHttpRequest</strong> 对象是浏览器提供的一个 API，用来顺畅地向服务器发送请求并解析服务器响应，当然整个过程中，浏览器页面不会被刷新。</li>
+<li>.open() 方法接收三个参数：请求方式（get or post），请求 URL 地址和是否为异步请求的布尔值。“同步”意味着一旦请求发出，任何后续的 JavaScript 代码不会再执行，“异步”则是当请求发出后，后续的 JavaScript 代码会继续执行，当请求成功后，会调用相应的回调函数。</li>
+</ul>
+<pre><code class="hljs javascript"><span class="hljs-comment">// 该段代码会启动一个针对“example.php”的GET同步请求。</span>
+xhr.open(<span class="hljs-string">&quot;get&quot;</span>, <span class="hljs-string">&quot;example.php&quot;</span>, <span class="hljs-literal">false</span>)</code></pre>
+
+<ul>
+<li>xhr 实例的 readystatechange 事件会监听 xhr.readyState 属性的变化，有以下五种变化：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>readyState</th>
+<th>对应常量</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0(未初始化)</td>
+<td>xhr.UNSENT</td>
+<td>请求已建立, 但未初始化(此时未调用open方法)</td>
+</tr>
+<tr>
+<td>1(初始化)</td>
+<td>xhr.OPENED</td>
+<td>请求已建立, 但未发送 (已调用open方法, 但未调用send方法)</td>
+</tr>
+<tr>
+<td>2(发送数据)</td>
+<td>xhr.HEADERS_RECEIVED</td>
+<td>请求已发送 (send方法已调用, 已收到响应头)</td>
+</tr>
+<tr>
+<td>3(数据发送中)</td>
+<td>xhr.LOADING</td>
+<td>请求处理中, 因响应内容不全, 这时通过responseBody和responseText获取可能会出现错误</td>
+</tr>
+<tr>
+<td>4(完成)</td>
+<td>xhr.DONE</td>
+<td>数据接收完毕, 此时可以通过responseBody和responseText获取完整的响应数据</td>
+</tr>
+</tbody></table>
+<h2 id="call、apply、bind-的区别"><a href="#call、apply、bind-的区别" class="headerlink" title="call、apply、bind 的区别"></a>call、apply、bind 的区别</h2><ul>
+<li><strong>call、apply 与 bind 的差别：</strong></li>
+</ul>
+<ol>
+<li>call 和 apply 改变了函数的 this 上下文后便执行该函数，而 bind 则是返回改变了上下文后的一个函数。</li>
+</ol>
+<ul>
+<li><strong>call、apply 的区别：</strong></li>
+</ul>
+<ol>
+<li>call 和 aplly 的第一个参数都是要改变上下文的对象，而 call 从第二个参数开始以参数列表的形式展现，apply 则是把除了改变上下文对象的参数放在一个数组里面作为它的第二个参数。</li>
+</ol>
+<pre><code class="hljs javascript">fn.call(obj, arg1, arg2, arg3...);
+fn.apply(obj, [arg1, arg2, arg3...]);</code></pre>
+
+<h2 id="setTimeout-和-setInterval-的区别，包含内存方面的分析？"><a href="#setTimeout-和-setInterval-的区别，包含内存方面的分析？" class="headerlink" title="setTimeout 和 setInterval 的区别，包含内存方面的分析？"></a>setTimeout 和 setInterval 的区别，包含内存方面的分析？</h2><ul>
+<li>setTimeout 表示间隔一段时间之后执行一次调用，而 setInterval 则是每间隔一段时间循环调用，直至 clearInterval 结束。</li>
+<li>内存方面，setTimeout 只需要进入一次队列，不会造成内存溢出，setInterval 因为不计算代码执行时间，有可能同时执行多次代码，导致内存溢出。</li>
+</ul>
+<h2 id="如何用-setTimeout-实现-setInterval？"><a href="#如何用-setTimeout-实现-setInterval？" class="headerlink" title="如何用 setTimeout 实现 setInterval？"></a>如何用 setTimeout 实现 setInterval？</h2><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> _setInterval = <span class="hljs-function">(<span class="hljs-params">fn, misc</span>) =&gt;</span> &#123;
+    <span class="hljs-keyword">const</span> interval = <span class="hljs-function">() =&gt;</span> &#123;
+        <span class="hljs-built_in">setTimeout</span>(interval, misc);
+        fn();
+    &#125;
+    <span class="hljs-built_in">setTimeout</span>(interval, misc);
+&#125;</code></pre>
+
+<h2 id="什么是深拷贝，什么是浅拷贝？"><a href="#什么是深拷贝，什么是浅拷贝？" class="headerlink" title="什么是深拷贝，什么是浅拷贝？"></a>什么是深拷贝，什么是浅拷贝？</h2><ul>
+<li><p>浅拷贝是指仅仅复制对象的引用，而不是复制对象本身。</p>
+</li>
+<li><p>深拷贝则是把复制对象所引用的全部对象都复制一遍。</p>
+</li>
+</ul>
+<h2 id="JavaScript-中-forEach-和-map-方法的区别"><a href="#JavaScript-中-forEach-和-map-方法的区别" class="headerlink" title="JavaScript 中 forEach 和 map 方法的区别"></a>JavaScript 中 forEach 和 map 方法的区别</h2><ul>
+<li>forEach 返回值是 undefined，不可链式调用。</li>
+<li>map 返回一个新数组，原数组不会改变。</li>
+<li>没有办法终止或者跳出 forEach 循环，除非抛出异常，如果想执行一个数组是否满足什么条件，可以用 Array.every() 或者 Array.some()。</li>
+</ul>
+<h2 id="script-标签如何异步加载？"><a href="#script-标签如何异步加载？" class="headerlink" title="script 标签如何异步加载？"></a>script 标签如何异步加载？</h2><p>默认情况下，浏览器是同步加载 JavaScript 脚本，即渲染引擎遇到 script 标签就会停下来，等到执行完脚本，再继续向下渲染。如果是外部脚本，还必须加入脚本下载的时间。如果脚本体积很大，下载和执行的时间就会很长，因此造成浏览器堵塞，用户会感觉到浏览器“卡死”了，没有任何响应。</p>
+<pre><code class="hljs javascript">&lt;script src=<span class="hljs-string">&quot;js1.js&quot;</span> defer&gt;&lt;/script&gt;
+&lt;script src=<span class="hljs-string">&quot;js2.js&quot;</span> <span class="hljs-keyword">async</span>&gt;&lt;/script&gt;</code></pre>
+
+<ul>
+<li><strong>defer与async的区别是：</strong></li>
+</ul>
+<ol>
+<li>加载时间：defer 要等到整个页面在内存中正常渲染结束（DOM 结构完全生成，以及其他脚本执行完成），才会执行；async 一旦下载完，渲染引擎就会中断渲染，执行这个脚本以后，再继续渲染。一句话，defer 是“渲染完再执行”，async 是“下载完就执行”。</li>
+<li>执行顺序：如果有多个 defer 脚本，会按照它们在页面出现的顺序加载，而多个 async 脚本是不能保证加载顺序的。</li>
+</ol>
+<h2 id="箭头函数和普通函数的区别是什么？"><a href="#箭头函数和普通函数的区别是什么？" class="headerlink" title="箭头函数和普通函数的区别是什么？"></a>箭头函数和普通函数的区别是什么？</h2><ul>
+<li>普通函数 this：</li>
+</ul>
+<ol>
+<li>this 总是代表它的直接调用者。</li>
+<li>在默认情况下，没找到直接调用者，this 指的是 window。</li>
+<li>在严格模式下，没有直接调用者的函数中的 this 是 undefined。</li>
+<li>使用 call，apply，bind 绑定，this 指的是绑定的对象。</li>
+</ol>
+<ul>
+<li>箭头函数 this：</li>
+</ul>
+<ol>
+<li>在使用=&gt;定义函数的时候，this的指向是 <strong>定义时所在的对象</strong>，而不是使用时所在的对象。</li>
+<li><strong>不能够用作构造函数</strong>，这就是说，不能够使用 new 命令，否则就会抛出一个错误。</li>
+<li>不能够使用 <strong>arguments</strong> 对象。</li>
+<li>不能使用 <strong>yield</strong> 命令。</li>
+</ol>
+<h2 id="举出三种判断数组的方法？"><a href="#举出三种判断数组的方法？" class="headerlink" title="举出三种判断数组的方法？"></a>举出三种判断数组的方法？</h2><ul>
+<li><strong>Object.prototype.toString.call()</strong></li>
+<li><strong>instanceof</strong></li>
+<li><strong>Array.isArray()</strong></li>
+</ul>
+<pre><code class="hljs js"><span class="hljs-built_in">Object</span>.prototype.toString.call(an); <span class="hljs-comment">// &quot;[object Array]&quot;</span>
+[] <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>; <span class="hljs-comment">// true</span>
+<span class="hljs-built_in">Array</span>.isArray(arr);  <span class="hljs-comment">// true</span></code></pre>
+
+<h2 id="使用-sort-对数组-3-15-8-29-102-22-进行排序，输出结果？"><a href="#使用-sort-对数组-3-15-8-29-102-22-进行排序，输出结果？" class="headerlink" title="使用 sort() 对数组 [3, 15, 8, 29, 102, 22] 进行排序，输出结果？"></a>使用 sort() 对数组 [3, 15, 8, 29, 102, 22] 进行排序，输出结果？</h2><ul>
+<li>sort 函数，可以接收一个函数，返回值是比较两个数的相对顺序的值。</li>
+<li>根据 MDN 上对 Array.sort() 的解释，默认的排序方法会将数组元素转换为字符串，然后比较字符串中字符的 UTF-16 编码顺序来进行排序。所以’102’ 会排在 ‘15’ 前面。结果是[102, 15, 22, 29, 3, 8]。</li>
 </ul>
 
             </div>
