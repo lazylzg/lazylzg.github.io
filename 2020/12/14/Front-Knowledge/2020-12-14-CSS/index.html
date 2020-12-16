@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Lee">
   <meta name="keywords" content="">
-  <title>JavaScript 中的相等操作符 ( 详解 [] == []、[] == ![]、{} == !{} ) - Lee</title>
+  <title>CSS 相关知识点 - Lee</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -172,8 +172,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-12-12 21:25" pubdate>
-      2020年12月12日 晚上
+    <time datetime="2020-12-14 22:22" pubdate>
+      2020年12月14日 晚上
     </time>
   </div>
 
@@ -183,7 +183,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      860 字
+      1k 字
     </span>
   
 
@@ -193,7 +193,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      13
        分钟
     </span>
   
@@ -223,67 +223,199 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">JavaScript 中的相等操作符 ( 详解 [] == []、[] == ![]、{} == !{} )</h1>
+            <h1 style="display: none">CSS 相关知识点</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2020年12月13日 下午
+                  本文最后更新于：2020年12月16日 晚上
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <p>ECMAScript 中的<strong>相等操作符</strong>由两个等于号 ( <strong>==</strong> ) 表示，如果两个操作数相等，则返回 true。</p>
-<p><strong>相等操作符会先转换操作数（通常称为强制转型）</strong>，然后比较它们的相等性。</p>
-<p>在转换不同的数据类型时，相等操作符遵循下列基本规则：</p>
-<ul>
-<li><p>如果有一个操作数是布尔值，则将其转换为数值再比较是否相等。false 转换为0，true 转换为1。</p>
-</li>
-<li><p>如果一个操作数是字符串，另一个操作数是数值，在比较之前先将字符串转换为数值，再比较是否相等。</p>
-</li>
-<li><p>如果一个操作数是对象，另一个操作数不是，则调用对象的 valueOf() 方法获得其原始值，再根据前面的规则进行比较。</p>
-<p>在进行比较时，这两个操作符会遵循如下规则：</p>
-<ul>
-<li>null 和 undefined 相等。</li>
-<li>null 和 undefined 不能转换为其他类型的值再进行比较。</li>
-<li>如果任一操作数是 NaN，则相等操作符返回 false，不相等操作符返回 true。即使两个操作数都是 NaN，相等操作符也返回 false，因为按照规则 <strong>NaN 不等于 NaN</strong>。</li>
-<li>如果两个操作数都是对象，则比较它们是不是同一个对象。如果指向同一个对象，则相等操作符返回 true。否则，两者不相等。</li>
+              <h2 id="介绍一下标准的-CSS-的盒子模型？低版本-IE-的盒子模型有什么不同的？"><a href="#介绍一下标准的-CSS-的盒子模型？低版本-IE-的盒子模型有什么不同的？" class="headerlink" title="介绍一下标准的 CSS 的盒子模型？低版本 IE 的盒子模型有什么不同的？"></a>介绍一下标准的 CSS 的盒子模型？低版本 IE 的盒子模型有什么不同的？</h2><ul>
+<li>盒模型都是由 margin、border、padding 和 content 四个部分组成。</li>
+<li>标准盒模型和 IE 盒模型的区别在于设置 width 和 height 所对应的范围不同。标准盒模型的 width 和 height 属性的范围只包含了 content，而 IE 盒模型的 width 和 height 属性的范围包含了 border、padding 和 content。</li>
 </ul>
+<h2 id="CSS-选择符有哪些？"><a href="#CSS-选择符有哪些？" class="headerlink" title="CSS 选择符有哪些？"></a>CSS 选择符有哪些？</h2><ul>
+<li>id选择器（#myid）</li>
+<li>类选择器（.myclassname）</li>
+<li>标签选择器（div,h1,p）</li>
+<li>后代选择器（h1 p）</li>
+<li>相邻后代选择器（子）选择器（ul&gt;li）</li>
+<li>兄弟选择器（li~a）</li>
+<li>相邻兄弟选择器（li+a）</li>
+<li>属性选择器（a[rel=”external”]）</li>
+<li>伪类选择器（a:hover,li:nth-child）</li>
+<li>伪元素选择器（::before、::after）</li>
+<li>通配符选择器（*）</li>
+</ul>
+<h2 id="before-和-after-中双冒号和单冒号有什么区别？"><a href="#before-和-after-中双冒号和单冒号有什么区别？" class="headerlink" title="::before 和:after 中双冒号和单冒号有什么区别？"></a>::before 和:after 中双冒号和单冒号有什么区别？</h2><ul>
+<li>单冒号（:）用于CSS3伪类，双冒号（::）用于CSS3伪元素。（伪元素由双冒号和伪元素名称组成）。</li>
+<li>为了兼容已有的伪元素的写法，在一些浏览器中也可以使用单冒号来表示伪元素。</li>
+<li>伪类一般匹配的是元素的一些特殊状态，如 hover、link 等，而伪元素一般匹配的特殊的位置，比如 after、before 等。</li>
+</ul>
+<h2 id="如何居中-div？"><a href="#如何居中-div？" class="headerlink" title="如何居中 div？"></a>如何居中 div？</h2><ul>
+<li>水平居中：给 div 设置一个宽度，然后添加 margin:0 auto 属性</li>
+</ul>
+<pre><code class="hljs css"><span class="hljs-selector-tag">div</span> &#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+&#125;</code></pre>
+
+<ul>
+<li>水平居中，利用 text-align:center 实现</li>
+</ul>
+<pre><code class="hljs css"><span class="hljs-selector-class">.container</span> &#123;
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.5</span>);
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;
+&#125;
+
+<span class="hljs-selector-class">.box</span> &#123;
+  <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">400px</span>;
+  <span class="hljs-attribute">background-color</span>: pink;
+&#125;</code></pre>
+
+<ul>
+<li>让绝对定位的 div 居中</li>
+</ul>
+<pre><code class="hljs css"><span class="hljs-selector-tag">div</span> &#123;
+  <span class="hljs-attribute">position</span>: absolute;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;
+  <span class="hljs-attribute">margin</span>: auto;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">background-color</span>: pink; <span class="hljs-comment">/*方便看效果*/</span>
+&#125;</code></pre>
+
+<ul>
+<li>水平垂直居中一</li>
+</ul>
+<pre><code class="hljs css"><span class="hljs-comment">/*确定容器的宽高宽500高300的层设置层的外边距div&#123;*/</span>
+<span class="hljs-selector-tag">position</span>: <span class="hljs-selector-tag">absolute</span>;<span class="hljs-comment">/*绝对定位*/</span>
+<span class="hljs-selector-tag">width</span>: 500<span class="hljs-selector-tag">px</span>;
+<span class="hljs-selector-tag">height</span>: 300<span class="hljs-selector-tag">px</span>;
+<span class="hljs-selector-tag">top</span>: 50%;
+<span class="hljs-selector-tag">left</span>: 50%;
+<span class="hljs-selector-tag">margin</span>: <span class="hljs-selector-tag">-150px00-250px</span>;<span class="hljs-comment">/*外边距为自身宽高的一半*/</span>
+<span class="hljs-selector-tag">background-color</span>: <span class="hljs-selector-tag">pink</span>;<span class="hljs-comment">/*方便看效果*/</span>
+&#125;</code></pre>
+
+<ul>
+<li>水平垂直居中二</li>
+</ul>
+<pre><code class="hljs css"><span class="hljs-comment">/*未知容器的宽高，利用`transform`属性*/</span>
+<span class="hljs-selector-tag">div</span> &#123;
+  <span class="hljs-attribute">position</span>: absolute; <span class="hljs-comment">/*相对定位或绝对定位均可*/</span>
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;
+  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>);
+  <span class="hljs-attribute">background-color</span>: pink; <span class="hljs-comment">/*方便看效果*/</span>
+&#125;</code></pre>
+
+<ul>
+<li>水平垂直居中三</li>
+</ul>
+<pre><code class="hljs css"><span class="hljs-comment">/*利用flex布局实际使用时应考虑兼容性*/</span>
+<span class="hljs-selector-class">.container</span> &#123;
+  <span class="hljs-attribute">display</span>: flex;
+  <span class="hljs-attribute">align-items</span>: center; <span class="hljs-comment">/*垂直居中*/</span>
+  <span class="hljs-attribute">justify-content</span>: center; <span class="hljs-comment">/*水平居中*/</span>
+&#125;
+<span class="hljs-selector-class">.containerdiv</span> &#123;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">background-color</span>: pink; <span class="hljs-comment">/*方便看效果*/</span>
+&#125;</code></pre>
+
+<ul>
+<li>水平垂直居中四</li>
+</ul>
+<pre><code class="hljs css"><span class="hljs-comment">/*利用text-align:center和vertical-align:middle属性*/</span>
+<span class="hljs-selector-class">.container</span> &#123;
+  <span class="hljs-attribute">position</span>: fixed;
+  <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.5</span>);
+  <span class="hljs-attribute">text-align</span>: center;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;
+  <span class="hljs-attribute">white-space</span>: nowrap;
+  <span class="hljs-attribute">overflow</span>: auto;
+&#125;
+
+<span class="hljs-selector-class">.container</span><span class="hljs-selector-pseudo">::after</span> &#123;
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">&#x27;&#x27;</span>;
+  <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">vertical-align</span>: middle;
+&#125;
+
+<span class="hljs-selector-class">.box</span> &#123;
+  <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">400px</span>;
+  <span class="hljs-attribute">background-color</span>: pink;
+  <span class="hljs-attribute">white-space</span>: normal;
+  <span class="hljs-attribute">vertical-align</span>: middle;
+&#125;</code></pre>
+
+<h2 id="display-有哪些值？"><a href="#display-有哪些值？" class="headerlink" title="display 有哪些值？"></a>display 有哪些值？</h2><table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">block</td>
+<td align="center">块类型。默认宽度为父元素宽度，可设置宽高，换行显示。</td>
+</tr>
+<tr>
+<td align="center">none</td>
+<td align="center">元素不显示，并从文档流中移除。</td>
+</tr>
+<tr>
+<td align="center">inline</td>
+<td align="center">行内元素类型。默认宽度为内容宽度，不可设置宽高，同行显示。</td>
+</tr>
+<tr>
+<td align="center">inline-block</td>
+<td align="center">默认宽度为内容宽度，可以设置宽高，同行显示。</td>
+</tr>
+<tr>
+<td align="center">list-item</td>
+<td align="center">像块类型元素一样显示，并添加样式列表标记。</td>
+</tr>
+<tr>
+<td align="center">table</td>
+<td align="center">此元素会作为块级表格来显示。</td>
+</tr>
+<tr>
+<td align="center">inherit</td>
+<td align="center">规定应该从父元素继承display属性的值。</td>
+</tr>
+</tbody></table>
+<h2 id="position-有那些值？作用是什么？"><a href="#position-有那些值？作用是什么？" class="headerlink" title="position 有那些值？作用是什么？"></a>position 有那些值？作用是什么？</h2><ul>
+<li><p><strong>absolute</strong><br>生成绝对定位的元素，相对于值不为 static 的第一个父元素的 padding box 进行定位，也可以理解为离自己这一级元素最近的一级 position 设置为 absolute 或者 relative 的父元素的 padding box 的左上角为原点的。</p>
+</li>
+<li><p><strong>fixed</strong>（老 IE 不支持）<br>生成绝对定位的元素，相对于浏览器窗口进行定位。</p>
+</li>
+<li><p><strong>relative</strong><br>生成相对定位的元素，相对于其元素本身所在正常位置进行定位。</p>
+</li>
+<li><p><strong>static</strong><br>默认值。没有定位，元素出现在正常的流中（忽略 top,bottom,left,right,z-index 声明）。</p>
+</li>
+<li><p><strong>inherit</strong><br>规定从父元素继承 position 属性的值。</p>
 </li>
 </ul>
-<h2 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a>基本规则</h2><p>如果相等操作符两边的操作数，不包含 null 或者 undefined，且两个操作数不全是对象，在执行相等比较之前，会先调用 Number() 将两个操作数强制转为 Number 类型，然后进行比较，所以在使用相等操作符的时候，会有以下情况：</p>
-<pre><code class="hljs javascript"><span class="hljs-string">&#x27;55&#x27;</span> == <span class="hljs-number">55</span>;       <span class="hljs-comment">//true</span>
-<span class="hljs-literal">false</span> == <span class="hljs-number">0</span>;       <span class="hljs-comment">//true</span>
-<span class="hljs-string">&quot;wise&quot;</span> == <span class="hljs-number">3</span>;      <span class="hljs-comment">//false （ Number(&quot;wise&quot;) -&gt; NaN ）</span>
-[] == <span class="hljs-number">0</span>;          <span class="hljs-comment">//true  （ Number([]) -&gt; 0 ）</span></code></pre>
-
-<p>但是在特殊情况下，也就是两边都有对象的时候，会产生看似不合理的结果：</p>
-<pre><code class="hljs javascript"><span class="hljs-literal">NaN</span> == <span class="hljs-literal">NaN</span>;  <span class="hljs-comment">//false</span>
-[] == [];    <span class="hljs-comment">//false</span>
-[] == ![];   <span class="hljs-comment">//true</span>
-&#123;&#125; == &#123;&#125;;    <span class="hljs-comment">//false</span>
-&#123;&#125; == !&#123;&#125;;   <span class="hljs-comment">//false</span></code></pre>
-
-<h2 id="和"><a href="#和" class="headerlink" title="[] == [] 和 {} == {}"></a>[] == [] 和 {} == {}</h2><p>在 JavaScript 中，<strong>Object、Array、Function、RegExp、Date</strong> <strong>都是引用类型</strong></p>
-<p>声明引用类型的时候，变量名保存在 js 的<strong>栈内存</strong>里面，而对应的值保存在<strong>堆内存</strong>里面</p>
-<p>而这个变量在栈内存中实际保存的是：<strong>这个值在堆内存中的地址</strong>，也就是<strong>指针</strong></p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> a = &#123;&#125;;
-<span class="hljs-keyword">var</span> b = &#123;&#125;;</code></pre>
-
-<p>上面的代码中，声明变量 a 的时候，在堆内存中存储了一个 Object，声明变量 b 的时候，又存储了一个新的 Object。</p>
-<p>虽然 a 和 b 都保存了一个 Object，但这是两个独立的 Object，它们的地址是不同的。</p>
-<p><strong>如果两个对象指向同一个对象，相等操作符返回 true</strong></p>
-<p>所以 <strong>{} == {}</strong> 的结果是 false，同样的， <strong>[] == []</strong> 的结果也是 false</p>
-<pre><code class="hljs javascript"><span class="hljs-keyword">var</span> c = b;
-b == c;   <span class="hljs-comment">//true（变量c保存的是b的指针，它们指向同一个对象）</span></code></pre>
-
-<h2 id="和-1"><a href="#和-1" class="headerlink" title="[] == ![] 和 {} == !{}"></a>[] == ![] 和 {} == !{}</h2><p>ECMAScript 中规定，逻辑非 (!) 的优先级高于相等操作符 ( == )，在比较 [] == ![] 的时候，先计算 ![] 得到布尔值 false，所以实际上比较的是 <strong>[] == false</strong>，然后将两个操作数转为数值类型：</p>
-<pre><code class="hljs javascript"><span class="hljs-built_in">Number</span>([]) == <span class="hljs-built_in">Number</span>(<span class="hljs-literal">false</span>);   <span class="hljs-comment">// -&gt;  0 == 0  -&gt;  true</span></code></pre>
-
-<p>在比较 {} == !{} 的时候，也是遵守同样的规则：</p>
-<pre><code class="hljs javascript">&#123;&#125; == !&#123;&#125;  -&gt;  &#123;&#125; == <span class="hljs-literal">false</span>  -&gt;  <span class="hljs-built_in">Number</span>(&#123;&#125;) == <span class="hljs-built_in">Number</span>(<span class="hljs-literal">false</span>)  -&gt;  <span class="hljs-literal">NaN</span> == <span class="hljs-number">0</span></code></pre>
-
-<p><strong>如果有一个操作数是 NaN，相等操作符返回 false</strong></p>
-<p>所以 {} == !{} 的结果是 false。</p>
 
             </div>
             <hr>
@@ -301,7 +433,9 @@ b == c;   <span class="hljs-comment">//true（变量c保存的是b的指针，�
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/JavaScript/">JavaScript</a>
+                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                      <a class="hover-with-bg" href="/tags/CSS/">CSS</a>
                     
                   </div>
                 
@@ -314,18 +448,12 @@ b == c;   <span class="hljs-comment">//true（变量c保存的是b的指针，�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/12/14/Front-Knowledge/2020-12-14-CSS/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CSS 相关知识点</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/12/12/Front-Knowledge/2020-12-12-JavaScript/">
-                        <span class="hidden-mobile">JavaScript 相关知识点</span>
+                      <a href="/2020/12/12/JavaScript/2020-12-12-JavaScript%20%E4%B8%AD%E7%9A%84%E7%9B%B8%E7%AD%89%E6%93%8D%E4%BD%9C%E7%AC%A6/">
+                        <span class="hidden-mobile">JavaScript 中的相等操作符 ( 详解 [] == []、[] == ![]、{} == !{} )</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -471,7 +599,7 @@ b == c;   <span class="hljs-comment">//true（变量c保存的是b的指针，�
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "JavaScript 中的相等操作符 ( 详解 [] == []、[] == ![]、{} == !{} )&nbsp;",
+        "CSS 相关知识点&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
